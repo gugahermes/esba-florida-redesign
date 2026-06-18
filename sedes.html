@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Red de Sedes ESBA Florida | Encontrá tu sede más cercana</title>
+<meta name="description" content="Encontrá la sede ESBA Florida más cercana a vos. Bachillerato para adultos a distancia con soporte presencial en más de 13 sedes en GBA y todo el país.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── VARIABLES DE MARCA ──────────────────────────────── */
+:root {
+  --azul:       #26276E;
+  --azul-dark:  #1a1b4f;
+  --azul-mid:   #3A3B8F;
+  --rojo:       #BF0411;
+  --rojo-dark:  #90191C;
+  --turquesa:   #5FBDD3;
+  --verde-mar:  #51A8B1;
+  --celeste:    #697FA5;
+  --lila:       #C882B6;
+  --rojo-fluor: #ED2F59;
+  --grad-main:  linear-gradient(135deg, #26276E 0%, #BF0411 100%);
+  --gris-claro: #F4F4F8;
+  --gris-med:   #E8E8F0;
+  --texto:      #1a1a2e;
+  --muted:      #666680;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;color:var(--texto);background:#fff;-webkit-font-smoothing:antialiased}
+a{text-decoration:none}
+img{max-width:100%;display:block}
+ul{list-style:none}
+
+/* ── HEADER ──────────────────────────────────────────── */
+header{
+  position:fixed;top:0;width:100%;z-index:1000;
+  background:rgba(255,255,255,0.97);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(38,39,110,0.08);
+  transition:box-shadow .3s;
+}
+header.scrolled{box-shadow:0 4px 24px rgba(38,39,110,0.12)}
+.hdr{
+  max-width:1280px;margin:0 auto;padding:0 32px;
+  height:70px;display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.logo-link{display:flex;align-items:center;flex-shrink:0;text-decoration:none}
+.logo-svg{height:46px;width:auto}
+nav{display:flex;align-items:center;gap:2px}
+.nav-item{position:relative}
+.nav-link{
+  font-size:13px;font-weight:500;color:var(--azul);
+  padding:7px 13px;border-radius:8px;display:block;
+  transition:background .2s,color .2s;white-space:nowrap;
+}
+.nav-link:hover,.nav-link.active{background:rgba(38,39,110,0.07)}
+.has-drop:after{content:'▾';font-size:9px;margin-left:4px;opacity:.6}
+.drop{
+  position:absolute;top:calc(100% + 6px);left:0;
+  background:#fff;border-radius:12px;
+  box-shadow:0 8px 32px rgba(38,39,110,0.14);
+  padding:8px;min-width:240px;
+  opacity:0;visibility:hidden;transform:translateY(-6px);
+  transition:all .2s;z-index:200;
+}
+.nav-item:hover .drop{opacity:1;visibility:visible;transform:translateY(0)}
+.drop a{
+  display:block;padding:9px 14px;font-size:13px;
+  color:var(--texto);border-radius:8px;transition:background .15s;
+}
+.drop a:hover,.drop a.active{background:var(--gris-claro);color:var(--azul);font-weight:600}
+.drop-divider{height:1px;background:var(--gris-med);margin:4px 8px}
+.btn-wa-hdr{
+  display:flex;align-items:center;gap:7px;
+  background:#25D366;color:#fff;
+  font-size:13px;font-weight:600;
+  padding:10px 18px;border-radius:50px;white-space:nowrap;
+  transition:transform .2s,box-shadow .2s;
+}
+.btn-wa-hdr:hover{transform:translateY(-1px);box-shadow:0 4px 18px rgba(37,211,102,.4)}
+.btn-wa-hdr svg{width:15px;height:15px;fill:#fff}
+
+/* ── HERO ────────────────────────────────────────────── */
+.page-hero{
+  margin-top:70px;position:relative;overflow:hidden;
+  background:linear-gradient(120deg,#1a1b4f 0%,#26276E 45%,#3A3B8F 80%,#1a1b4f 100%);
+  padding:60px 32px 52px;
+}
+.hero-pattern{
+  position:absolute;inset:0;
+  background-image:
+    radial-gradient(circle at 80% 20%, rgba(95,189,211,.13) 0%, transparent 50%),
+    radial-gradient(circle at 15% 80%, rgba(191,4,17,.10) 0%, transparent 40%);
+}
+.hero-inner{position:relative;z-index:2;max-width:1280px;margin:0 auto}
+.breadcrumb{
+  font-size:12px;color:rgba(255,255,255,.55);
+  margin-bottom:16px;letter-spacing:.3px;
+}
+.breadcrumb a{color:rgba(255,255,255,.8);transition:color .2s}
+.breadcrumb a:hover{color:#fff}
+.page-title{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:clamp(28px,4.2vw,46px);
+  font-weight:700;color:#fff;
+  line-height:1.15;margin-bottom:14px;max-width:680px;
+}
+.page-sub{
+  font-size:16px;color:rgba(255,255,255,.75);
+  max-width:580px;line-height:1.7;
+}
+
+/* Stats strip en el hero */
+.hero-stats{
+  display:flex;gap:0;margin-top:36px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:16px;
+  overflow:hidden;max-width:580px;
+}
+.hstat{
+  flex:1;padding:18px 24px;text-align:center;
+  border-right:1px solid rgba(255,255,255,.1);
+}
+.hstat:last-child{border-right:none}
+.hstat-num{
+  font-size:26px;font-weight:700;color:#fff;
+  font-family:'Playfair Display',serif;
+  line-height:1;
+}
+.hstat-lbl{
+  font-size:10.5px;color:rgba(255,255,255,.55);
+  text-transform:uppercase;letter-spacing:.8px;
+  margin-top:5px;
+}
+
+/* ── FILTRO POR ZONA ─────────────────────────────────── */
+.filtro-sec{
+  background:#fff;
+  border-bottom:1px solid var(--gris-med);
+  padding:20px 32px;
+  position:sticky;top:70px;z-index:100;
+}
+.filtro-inner{
+  max-width:1280px;margin:0 auto;
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+}
+.filtro-lbl{
+  font-size:12px;font-weight:600;color:var(--muted);
+  text-transform:uppercase;letter-spacing:1px;
+  flex-shrink:0;
+}
+.filtro-tabs{display:flex;gap:8px;flex-wrap:wrap}
+.ftab{
+  font-size:13px;font-weight:500;color:var(--muted);
+  padding:7px 16px;border-radius:50px;
+  border:1.5px solid var(--gris-med);
+  cursor:pointer;background:#fff;
+  transition:all .2s;
+}
+.ftab:hover{border-color:var(--azul);color:var(--azul)}
+.ftab.active{
+  background:var(--azul);color:#fff;
+  border-color:var(--azul);font-weight:600;
+}
+
+/* ── CONTENIDO PRINCIPAL ─────────────────────────────── */
+.sedes-main{padding:56px 32px 80px;background:var(--gris-claro)}
+.sedes-inner{max-width:1280px;margin:0 auto}
+
+/* ── SEDE CENTRAL ────────────────────────────────────── */
+.sede-central-wrap{margin-bottom:48px}
+.sec-label{
+  font-size:11px;font-weight:700;
+  letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--rojo);margin-bottom:16px;
+}
+.sede-central{
+  display:grid;grid-template-columns:1fr 380px;
+  background:linear-gradient(120deg, var(--azul-dark) 0%, var(--azul) 55%, var(--azul-mid) 100%);
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 16px 56px rgba(38,39,110,0.22);
+  position:relative;
+}
+.sede-central::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle at 90% 50%, rgba(95,189,211,.12) 0%, transparent 55%);
+}
+.sc-body{padding:44px 40px;position:relative;z-index:2}
+.sc-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--rojo);color:#fff;
+  font-size:10px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 14px;border-radius:50px;margin-bottom:20px;
+}
+.sc-badge svg{width:11px;height:11px;stroke:#fff;fill:none;stroke-width:2.5}
+.sc-name{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:clamp(22px,3vw,32px);
+  font-weight:700;color:#fff;
+  line-height:1.2;margin-bottom:8px;
+}
+.sc-subtitle{
+  font-size:14px;color:rgba(255,255,255,.65);
+  margin-bottom:28px;line-height:1.6;
+}
+.sc-info{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.sc-row{display:flex;align-items:flex-start;gap:12px}
+.sc-row svg{
+  width:16px;height:16px;stroke:var(--turquesa);fill:none;
+  stroke-width:2;flex-shrink:0;margin-top:2px;
+}
+.sc-row-text{font-size:14px;color:rgba(255,255,255,.85);line-height:1.5}
+.sc-row-text strong{color:#fff;display:block;font-size:13px;font-weight:700;margin-bottom:1px}
+.sc-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.sc-btn-wa{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#25D366;color:#fff;
+  font-size:13.5px;font-weight:600;
+  padding:13px 22px;border-radius:50px;
+  transition:transform .2s,box-shadow .2s;
+}
+.sc-btn-wa:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,211,102,.45)}
+.sc-btn-wa svg{width:16px;height:16px;fill:#fff}
+.sc-btn-tel{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.12);color:#fff;
+  border:1.5px solid rgba(255,255,255,.3);
+  font-size:13.5px;font-weight:600;
+  padding:12px 22px;border-radius:50px;
+  transition:all .2s;
+}
+.sc-btn-tel:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.5)}
+.sc-btn-tel svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2}
+
+/* Panel lateral de la sede central */
+.sc-side{
+  background:rgba(255,255,255,.06);
+  border-left:1px solid rgba(255,255,255,.1);
+  padding:40px 32px;
+  display:flex;flex-direction:column;gap:20px;
+  position:relative;z-index:2;
+}
+.sc-side-title{
+  font-size:11px;font-weight:700;color:rgba(255,255,255,.4);
+  text-transform:uppercase;letter-spacing:2px;margin-bottom:4px;
+}
+.sc-offer{
+  display:flex;align-items:center;gap:12px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;padding:14px 16px;
+}
+.sc-offer-icon{
+  width:36px;height:36px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.sc-offer-icon svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.8}
+.sc-offer-text{font-size:13px;color:rgba(255,255,255,.82);font-weight:500;line-height:1.4}
+.sc-offer-text span{font-size:11px;color:rgba(255,255,255,.45);display:block;margin-top:1px}
+
+/* ── SUBSEDES GRID ───────────────────────────────────── */
+.subsedes-section{margin-top:0}
+.subsedes-head{
+  display:flex;align-items:baseline;justify-content:space-between;
+  margin-bottom:24px;flex-wrap:wrap;gap:8px;
+}
+.subsedes-count{
+  font-size:13px;color:var(--muted);font-weight:500;
+}
+.sedes-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:20px;
+}
+
+/* ── SEDE CARD ───────────────────────────────────────── */
+.sede-card{
+  background:#fff;border-radius:18px;
+  border:1px solid var(--gris-med);
+  overflow:hidden;
+  transition:transform .25s,box-shadow .25s;
+  display:flex;flex-direction:column;
+}
+.sede-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 40px rgba(38,39,110,0.11);
+}
+.sede-card-top{
+  height:5px;background:var(--azul);flex-shrink:0;
+}
+.sede-card-top.turquesa{background:var(--turquesa)}
+.sede-card-top.verde{background:var(--verde-mar)}
+.sede-card-top.celeste{background:var(--celeste)}
+.sede-card-top.lila{background:var(--lila)}
+.sede-card-body{padding:22px 22px 18px;flex:1;display:flex;flex-direction:column}
+.sede-zona-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--azul);
+  background:rgba(38,39,110,.07);
+  border-radius:50px;padding:4px 11px;
+  margin-bottom:14px;width:fit-content;
+}
+.sede-nombre{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:18px;font-weight:700;
+  color:var(--azul);line-height:1.2;margin-bottom:4px;
+}
+.sede-ciudad{
+  font-size:13px;color:var(--muted);margin-bottom:18px;
+}
+.sede-datos{display:flex;flex-direction:column;gap:10px;flex:1}
+.sede-dato{display:flex;align-items:flex-start;gap:10px}
+.sede-dato svg{
+  width:14px;height:14px;stroke:var(--celeste);fill:none;
+  stroke-width:2;flex-shrink:0;margin-top:2px;
+}
+.sede-dato-txt{font-size:13px;color:var(--texto);line-height:1.45}
+.sede-dato-txt small{display:block;font-size:11.5px;color:var(--muted);margin-top:1px}
+.sede-card-footer{
+  padding:14px 22px 18px;
+  border-top:1px solid var(--gris-claro);
+  display:flex;gap:8px;
+}
+.btn-sede-wa{
+  flex:1;display:flex;align-items:center;justify-content:center;gap:7px;
+  background:#25D366;color:#fff;
+  font-size:12.5px;font-weight:600;
+  padding:10px 14px;border-radius:50px;
+  transition:transform .2s,box-shadow .2s;
+}
+.btn-sede-wa:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(37,211,102,.4)}
+.btn-sede-wa svg{width:14px;height:14px;fill:#fff}
+.btn-sede-tel{
+  display:flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:50%;
+  border:1.5px solid var(--gris-med);color:var(--azul);
+  transition:all .2s;flex-shrink:0;
+}
+.btn-sede-tel:hover{border-color:var(--azul);background:var(--azul);color:#fff}
+.btn-sede-tel svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* ── CTA: CONVERTIRSE EN SEDE ────────────────────────── */
+.cta-sede-sec{
+  margin-top:64px;padding:52px 40px;
+  background:linear-gradient(120deg, var(--azul-dark) 0%, var(--azul) 60%, #3A3B8F 100%);
+  border-radius:24px;
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:32px;flex-wrap:wrap;
+}
+.cta-sede-sec::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 85% 50%, rgba(95,189,211,.12) 0%, transparent 60%);
+}
+.cta-side{position:relative;z-index:2}
+.cta-label{
+  font-size:11px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--turquesa);
+  margin-bottom:12px;
+}
+.cta-title{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:clamp(20px,2.8vw,30px);
+  font-weight:700;color:#fff;
+  line-height:1.2;margin-bottom:12px;
+}
+.cta-desc{
+  font-size:14.5px;color:rgba(255,255,255,.7);
+  line-height:1.65;max-width:500px;
+}
+.cta-beneficios{
+  display:flex;flex-direction:column;gap:8px;
+  margin-top:20px;
+}
+.cta-item{
+  display:flex;align-items:center;gap:10px;
+  font-size:13.5px;color:rgba(255,255,255,.85);
+}
+.cta-item::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--turquesa);flex-shrink:0;
+}
+.cta-actions{
+  display:flex;flex-direction:column;gap:12px;
+  position:relative;z-index:2;flex-shrink:0;
+}
+.btn-cta-rojo{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--rojo);color:#fff;
+  font-size:14px;font-weight:600;
+  padding:15px 28px;border-radius:50px;
+  white-space:nowrap;
+  transition:transform .2s,box-shadow .2s;
+}
+.btn-cta-rojo:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(191,4,17,.45)}
+.btn-cta-ghost{
+  display:inline-flex;align-items:center;gap:8px;
+  color:rgba(255,255,255,.8);
+  font-size:13px;font-weight:500;
+  padding:12px 28px;border-radius:50px;
+  border:1.5px solid rgba(255,255,255,.25);
+  white-space:nowrap;text-align:center;
+  justify-content:center;
+  transition:all .2s;
+}
+.btn-cta-ghost:hover{border-color:rgba(255,255,255,.6);color:#fff}
+
+/* ── FOOTER ──────────────────────────────────────────── */
+footer{background:#0d0e33;padding:52px 32px 24px}
+.footer-top{
+  max-width:1280px;margin:0 auto;
+  display:flex;justify-content:space-between;
+  gap:48px;flex-wrap:wrap;
+  padding-bottom:40px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  margin-bottom:24px;
+}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.45);margin-top:10px;line-height:1.6;max-width:200px}
+.footer-links h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:rgba(255,255,255,.35);margin-bottom:16px}
+.footer-links ul{display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.6);transition:color .2s}
+.footer-links a:hover{color:#fff}
+.footer-bottom{
+  max-width:1280px;margin:0 auto;
+  display:flex;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;gap:12px;
+  font-size:12px;color:rgba(255,255,255,.3);
+}
+.footer-bottom a{color:rgba(255,255,255,.4)}
+.footer-diegep{font-size:11px;color:rgba(255,255,255,.25);margin-top:2px}
+
+/* ── FLOATING WA ─────────────────────────────────────── */
+.wa-float{
+  position:fixed;bottom:26px;right:26px;
+  width:58px;height:58px;border-radius:50%;
+  background:#25D366;
+  display:flex;align-items:center;justify-content:center;
+  z-index:900;
+  box-shadow:0 4px 22px rgba(37,211,102,.55);
+  transition:transform .25s,box-shadow .25s;
+  animation:wapulse 3.5s infinite;
+}
+.wa-float:hover{transform:scale(1.12);box-shadow:0 8px 30px rgba(37,211,102,.65);animation:none}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+@keyframes wapulse{
+  0%,100%{box-shadow:0 4px 22px rgba(37,211,102,.55)}
+  50%{box-shadow:0 4px 32px rgba(37,211,102,.8),0 0 0 10px rgba(37,211,102,.1)}
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media(max-width:960px){
+  .sede-central{grid-template-columns:1fr}
+  .sc-side{border-left:none;border-top:1px solid rgba(255,255,255,.1);
+    display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .sc-side-title{grid-column:1/-1}
+}
+@media(max-width:640px){
+  .sedes-grid{grid-template-columns:1fr}
+  .filtro-sec{position:static}
+  .hero-stats{max-width:100%;gap:0}
+  .hstat-num{font-size:22px}
+  .sc-ctas{flex-direction:column}
+  .cta-sede-sec{flex-direction:column}
+  .sc-side{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ─────────────────────────────────────────── -->
+<header id="hdr">
+  <div class="hdr">
+    <a href="./" class="logo-link" aria-label="ESBA Florida">
+      <img src="assets/logo-esba-florida.png" alt="ESBA Florida" class="logo-svg">
+    </a>
+
+    <nav>
+      <a href="bachillerato.html" class="nav-link">Bachillerato</a>
+      <div class="nav-item">
+        <a href="#" class="nav-link has-drop">Carreras</a>
+        <div class="drop">
+          <a href="tecnicaturas.html">Tecnicaturas de Nivel Superior</a>
+          <div class="drop-divider"></div>
+          <a href="carreras-ucasal.html">Carreras universitarias UCASAL</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="cursos.html" class="nav-link has-drop">Cursos</a>
+        <div class="drop">
+          <a href="curso-camaras-seguridad.html">Cámaras y Alarmas</a>
+          <a href="curso-electricidad-domiciliaria.html">Electricidad Domiciliaria</a>
+          <a href="curso-energia-solar.html">Energía Solar Fotovoltaica</a>
+          <a href="curso-aires-acondicionados.html">Instalación y Reparación de Aires Acondicionados</a>
+          <a href="curso-plomeria.html">Plomería Domiciliaria</a>
+          <div class="drop-divider"></div>
+          <a href="cursos.html">Ver todos los cursos</a>
+        </div>
+      </div>
+      <a href="sedes.html" class="nav-link active">Sedes</a>
+      <div class="nav-item">
+        <a href="#" class="nav-link has-drop">Institucional</a>
+        <div class="drop">
+          <a href="institucional.html#historia">Nuestra historia</a>
+          <a href="institucional.html#autoridades">Autoridades</a>
+          <a href="institucional.html#convenios">Convenios</a>
+        </div>
+      </div>
+      <a href="contacto.html" class="nav-link">Contacto</a>
+    </nav>
+
+    <a href="https://wa.me/5491157400965?text=Hola!%20Quiero%20informaci%C3%B3n%20sobre%20ESBA%20Florida." class="btn-wa-hdr" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      Consultar ahora
+    </a>
+  </div>
+</header>
+
+<!-- ── HERO ────────────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-inner">
+    <div class="breadcrumb">
+      <a href="./">Inicio</a> &nbsp;/&nbsp; Sedes
+    </div>
+    <h1 class="page-title">Encontrá la sede ESBA más cercana a vos</h1>
+    <p class="page-sub">Tenemos presencia en todo el Gran Buenos Aires y en varias provincias del país. Cada sede cuenta con asesores capacitados para acompañarte en todo el proceso.</p>
+
+    <div class="hero-stats">
+      <div class="hstat">
+        <div class="hstat-num">+13</div>
+        <div class="hstat-lbl">Sedes activas</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">GBA</div>
+        <div class="hstat-lbl">y provincias</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">+15</div>
+        <div class="hstat-lbl">Años de trayectoria</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FILTRO ──────────────────────────────────────────── -->
+<div class="filtro-sec">
+  <div class="filtro-inner">
+    <span class="filtro-lbl">Zona:</span>
+    <div class="filtro-tabs">
+      <button class="ftab active" data-zone="todas">Todas</button>
+      <button class="ftab" data-zone="gba-norte">GBA Norte</button>
+      <button class="ftab" data-zone="gba-oeste">GBA Oeste</button>
+      <button class="ftab" data-zone="gba-sur">GBA Sur</button>
+      <button class="ftab" data-zone="caba">CABA</button>
+      <button class="ftab" data-zone="interior">Interior Pcia.</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── CONTENIDO PRINCIPAL ────────────────────────────── -->
+<div class="sedes-main">
+  <div class="sedes-inner">
+
+    <!-- SEDE CENTRAL -->
+    <div class="sede-central-wrap">
+      <div class="sec-label">Sede principal</div>
+      <div class="sede-central">
+        <div class="sc-body">
+          <span class="sc-badge">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Sede Central
+          </span>
+          <h2 class="sc-name">ESBA Florida — Olivos</h2>
+          <p class="sc-subtitle">Sede institucional y administrativa. Asesoramiento personalizado, gestión de inscripciones, cursos presenciales y soporte académico central.</p>
+
+          <div class="sc-info">
+            <div class="sc-row">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div class="sc-row-text">
+                <strong>Dirección</strong>
+                <!-- REEMPLAZAR con dirección real -->
+                Av. Maipú 1234, Olivos, Vicente López, Buenos Aires
+              </div>
+            </div>
+            <div class="sc-row">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <div class="sc-row-text">
+                <strong>Teléfono / WhatsApp</strong>
+                <!-- REEMPLAZAR con número real -->
+                11 5740-0965
+              </div>
+            </div>
+            <div class="sc-row">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <div class="sc-row-text">
+                <strong>Horario de atención</strong>
+                <!-- REEMPLAZAR con horario real -->
+                Lunes a viernes de 9 a 18 hs · Sábados de 9 a 13 hs
+              </div>
+            </div>
+          </div>
+
+          <div class="sc-ctas">
+            <a href="https://wa.me/5491157400965?text=Hola!%20Quiero%20informaci%C3%B3n%20sobre%20ESBA%20Florida." class="sc-btn-wa" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              Escribir por WhatsApp
+            </a>
+            <a href="tel:+5491157400965" class="sc-btn-tel">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              Llamar
+            </a>
+          </div>
+        </div>
+
+        <div class="sc-side">
+          <div class="sc-side-title">Oferta en esta sede</div>
+          <div class="sc-offer">
+            <div class="sc-offer-icon" style="background:var(--rojo)">
+              <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div class="sc-offer-text">
+              Bachillerato para Adultos
+              <span>A distancia · 3 planes disponibles</span>
+            </div>
+          </div>
+          <div class="sc-offer">
+            <div class="sc-offer-icon" style="background:var(--turquesa)">
+              <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div class="sc-offer-text">
+              Cursos con Salida Laboral
+              <span>Electricidad · Cámaras · Solar · Aires · Plomería</span>
+            </div>
+          </div>
+          <div class="sc-offer">
+            <div class="sc-offer-icon" style="background:var(--celeste)">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            </div>
+            <div class="sc-offer-text">
+              Tecnicaturas Nivel Superior
+              <span>Canal de inscripción · 6 carreras a distancia</span>
+            </div>
+          </div>
+          <div class="sc-offer">
+            <div class="sc-offer-icon" style="background:var(--lila)">
+              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div class="sc-offer-text">
+              Carreras Universitarias UCASAL
+              <span>Sede autorizada · Modalidad a distancia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBSEDES -->
+    <div class="subsedes-section">
+      <div class="subsedes-head">
+        <div class="sec-label" style="margin-bottom:0">Red de subsedes</div>
+        <div class="subsedes-count" id="sedes-count">Mostrando 12 sedes</div>
+      </div>
+
+      <div class="sedes-grid" id="sedes-grid">
+
+        <!-- ═══ SUBSEDE 1 ═══ COMPLETAR CON DATOS REALES ═══ -->
+        <div class="sede-card" data-zone="gba-norte">
+          <div class="sede-card-top turquesa"></div>
+          <div class="sede-card-body">
+            <span class="sede-zona-badge">GBA Norte</span>
+            <div class="sede-nombre">Sede San Isidro</div>
+            <div class="sede-ciudad">San Isidro, Buenos Aires</div>
+            <div class="sede-datos">
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="sede-dato-txt">Av. Libertador 000 <small><!-- dirección real --></small></div>
+              </div>
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <div class="sede-dato-txt">11 XXXX-XXXX <small>Bachillerato para adultos</small></div>
+              </div>
+            </div>
+          </div>
+          <div class="sede-card-footer">
+            <a href="https://wa.me/549XXXXXXXXXX" class="btn-sede-wa" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              WhatsApp
+            </a>
+            <a href="tel:+54911XXXXXXXX" class="btn-sede-tel">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- ═══ SUBSEDE 2 ═══ -->
+        <div class="sede-card" data-zone="gba-norte">
+          <div class="sede-card-top turquesa"></div>
+          <div class="sede-card-body">
+            <span class="sede-zona-badge">GBA Norte</span>
+            <div class="sede-nombre">Sede Pilar</div>
+            <div class="sede-ciudad">Pilar, Buenos Aires</div>
+            <div class="sede-datos">
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="sede-dato-txt">Av. Derqui 000 <small><!-- dirección real --></small></div>
+              </div>
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <div class="sede-dato-txt">11 XXXX-XXXX <small>Bachillerato para adultos</small></div>
+              </div>
+            </div>
+          </div>
+          <div class="sede-card-footer">
+            <a href="https://wa.me/549XXXXXXXXXX" class="btn-sede-wa" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              WhatsApp
+            </a>
+            <a href="tel:+54911XXXXXXXX" class="btn-sede-tel">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- ═══ SUBSEDE 3 ═══ -->
+        <div class="sede-card" data-zone="gba-oeste">
+          <div class="sede-card-top verde"></div>
+          <div class="sede-card-body">
+            <span class="sede-zona-badge">GBA Oeste</span>
+            <div class="sede-nombre">Sede Morón</div>
+            <div class="sede-ciudad">Morón, Buenos Aires</div>
+            <div class="sede-datos">
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="sede-dato-txt">Calle 000, Morón <small><!-- dirección real --></small></div>
+              </div>
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <div class="sede-dato-txt">11 XXXX-XXXX <small>Bachillerato para adultos</small></div>
+              </div>
+            </div>
+          </div>
+          <div class="sede-card-footer">
+            <a href="https://wa.me/549XXXXXXXXXX" class="btn-sede-wa" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              WhatsApp
+            </a>
+            <a href="tel:+54911XXXXXXXX" class="btn-sede-tel">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- ═══ SUBSEDE 4 ═══ -->
+        <div class="sede-card" data-zone="gba-oeste">
+          <div class="sede-card-top verde"></div>
+          <div class="sede-card-body">
+            <span class="sede-zona-badge">GBA Oeste</span>
+            <div class="sede-nombre">Sede La Matanza</div>
+            <div class="sede-ciudad">San Justo, Buenos Aires</div>
+            <div class="sede-datos">
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="sede-dato-txt">Calle 000, San Justo <small><!-- dirección real --></small></div>
+              </div>
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <div class="sede-dato-txt">11 XXXX-XXXX <small>Bachillerato para adultos</small></div>
+              </div>
+            </div>
+          </div>
+          <div class="sede-card-footer">
+            <a href="https://wa.me/549XXXXXXXXXX" class="btn-sede-wa" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              WhatsApp
+            </a>
+            <a href="tel:+54911XXXXXXXX" class="btn-sede-tel">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- ═══ SUBSEDE 5 ═══ -->
+        <div class="sede-card" data-zone="gba-sur">
+          <div class="sede-card-top celeste"></div>
+          <div class="sede-card-body">
+            <span class="sede-zona-badge">GBA Sur</span>
+            <div class="sede-nombre">Sede Lanús</div>
+            <div class="sede-ciudad">Lanús, Buenos Aires</div>
+            <div class="sede-datos">
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="sede-dato-txt">Calle 000, Lanús <small><!-- dirección real --></small></div>
+              </div>
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <div class="sede-dato-txt">11 XXXX-XXXX <small>Bachillerato para adultos</small></div>
+              </div>
+            </div>
+          </div>
+          <div class="sede-card-footer">
+            <a href="https://wa.me/549XXXXXXXXXX" class="btn-sede-wa" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              WhatsApp
+            </a>
+            <a href="tel:+54911XXXXXXXX" class="btn-sede-tel">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- ═══ SUBSEDE 6 ═══ -->
+        <div class="sede-card" data-zone="gba-sur">
+          <div class="sede-card-top celeste"></div>
+          <div class="sede-card-body">
+            <span class="sede-zona-badge">GBA Sur</span>
+            <div class="sede-nombre">Sede Quilmes</div>
+            <div class="sede-ciudad">Quilmes, Buenos Aires</div>
+            <div class="sede-datos">
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="sede-dato-txt">Av. H. Yrigoyen 000 <small><!-- dirección real --></small></div>
+              </div>
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <div class="sede-dato-txt">11 XXXX-XXXX <small>Bachillerato para adultos</small></div>
+              </div>
+            </div>
+          </div>
+          <div class="sede-card-footer">
+            <a href="https://wa.me/549XXXXXXXXXX" class="btn-sede-wa" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              WhatsApp
+            </a>
+            <a href="tel:+54911XXXXXXXX" class="btn-sede-tel">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- ═══ SUBSEDE 7 — CABA ═══ -->
+        <div class="sede-card" data-zone="caba">
+          <div class="sede-card-top lila"></div>
+          <div class="sede-card-body">
+            <span class="sede-zona-badge">CABA</span>
+            <div class="sede-nombre">Sede Barrio Norte</div>
+            <div class="sede-ciudad">Ciudad Autónoma de Buenos Aires</div>
+            <div class="sede-datos">
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="sede-dato-txt">Av. Santa Fe 000 <small><!-- dirección real --></small></div>
+              </div>
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <div class="sede-dato-txt">11 XXXX-XXXX <small>Bachillerato · Tecnicaturas</small></div>
+              </div>
+            </div>
+          </div>
+          <div class="sede-card-footer">
+            <a href="https://wa.me/549XXXXXXXXXX" class="btn-sede-wa" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              WhatsApp
+            </a>
+            <a href="tel:+54911XXXXXXXX" class="btn-sede-tel">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- ═══ SUBSEDE 8 — Interior ═══ -->
+        <div class="sede-card" data-zone="interior">
+          <div class="sede-card-top" style="background:var(--rojo-fluor)"></div>
+          <div class="sede-card-body">
+            <span class="sede-zona-badge" style="background:rgba(237,47,89,.08);color:var(--rojo-fluor)">Interior Pcia.</span>
+            <div class="sede-nombre">Sede Mar del Plata</div>
+            <div class="sede-ciudad">Mar del Plata, Buenos Aires</div>
+            <div class="sede-datos">
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="sede-dato-txt">Calle 000, MdP <small><!-- dirección real --></small></div>
+              </div>
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <div class="sede-dato-txt">2236 XXX-XXX <small>Bachillerato para adultos</small></div>
+              </div>
+            </div>
+          </div>
+          <div class="sede-card-footer">
+            <a href="https://wa.me/549XXXXXXXXXX" class="btn-sede-wa" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              WhatsApp
+            </a>
+            <a href="tel:+54223XXXXXXX" class="btn-sede-tel">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- ═══ SEDES 9–12: agregar con el mismo patrón ═══ -->
+        <!-- Copiar y pegar un bloque .sede-card por cada subsede real adicional -->
+
+      </div><!-- /sedes-grid -->
+    </div><!-- /subsedes-section -->
+
+    <!-- ── CTA NUEVA SEDE ──────────────────────────────── -->
+    <div class="cta-sede-sec">
+      <div class="cta-side">
+        <div class="cta-label">Oportunidad comercial</div>
+        <h2 class="cta-title">¿Querés abrir una sede ESBA en tu zona?</h2>
+        <p class="cta-desc">Sumarte a la red ESBA como subsede te permite generar ingresos recurrentes ofreciendo el bachillerato para adultos con todo el respaldo académico, legal y comercial de una institución con más de 15 años de trayectoria.</p>
+        <div class="cta-beneficios">
+          <div class="cta-item">Marca establecida y reconocida en el sector educativo</div>
+          <div class="cta-item">Respaldo académico y operativo desde sede central</div>
+          <div class="cta-item">Comisión sobre matrículas y cuotas de tus alumnos</div>
+          <div class="cta-item">Sin inversión inicial en infraestructura académica</div>
+        </div>
+      </div>
+      <div class="cta-actions">
+        <a href="https://wa.me/5491157400965?text=Hola!%20Quiero%20informaci%C3%B3n%20para%20abrir%20una%20sede%20ESBA%20en%20mi%20zona." class="btn-cta-rojo" target="_blank" rel="noopener noreferrer">
+          Quiero ser sede ESBA →
+        </a>
+        <a href="contacto.html" class="btn-cta-ghost">
+          Solicitar más información
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── FOOTER ──────────────────────────────────────────── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="assets/logo-esba-florida.png" alt="ESBA Florida" style="height:40px;width:auto;background:#fff;padding:8px 14px;border-radius:8px">
+      <p>Educación de calidad<br>al alcance de todos.</p>
+      <p class="footer-diegep" style="margin-top:6px">DIEGEP N° 6278 · Res. 6794/00</p>
+    </div>
+    <div class="footer-links">
+      <h4>Bachillerato</h4>
+      <ul>
+        <li><a href="bachillerato.html">Bachillerato Acelerado para Adultos</a></li>
+        <li><a href="bachillerato.html#proceso">Cómo se cursa</a></li>
+        <li><a href="bachillerato.html#planes">Plan de estudios</a></li>
+        <li><a href="bachillerato.html#preinscripcion">Preinscripción</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Carreras y Cursos</h4>
+      <ul>
+        <li><a href="tecnicaturas.html">Tecnicaturas Nivel Superior</a></li>
+        <li><a href="carreras-ucasal.html">Carreras UCASAL</a></li>
+        <li><a href="cursos.html">Cursos presenciales</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Institución</h4>
+      <ul>
+        <li><a href="institucional.html#historia">Nuestra historia</a></li>
+        <li><a href="sedes.html">Sedes</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 ESBA Florida. Todos los derechos reservados.</span>
+    <span>esbaflorida.edu.ar</span>
+  </div>
+</footer>
+
+<!-- ── WHATSAPP FLOTANTE ─────────────────────────────── -->
+<a class="wa-float" href="https://wa.me/5491157400965?text=Hola!%20Quiero%20informaci%C3%B3n%20sobre%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
+<script>
+// Scroll header
+const hdr = document.getElementById('hdr');
+window.addEventListener('scroll', () => {
+  hdr.classList.toggle('scrolled', window.scrollY > 30);
+});
+
+// Filtro por zona
+const tabs = document.querySelectorAll('.ftab');
+const cards = document.querySelectorAll('.sede-card[data-zone]');
+const countEl = document.getElementById('sedes-count');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const zone = tab.dataset.zone;
+    let visible = 0;
+    cards.forEach(card => {
+      const show = zone === 'todas' || card.dataset.zone === zone;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    countEl.textContent = `Mostrando ${visible} sede${visible !== 1 ? 's' : ''}`;
+  });
+});
+</script>
+</body>
+</html>
