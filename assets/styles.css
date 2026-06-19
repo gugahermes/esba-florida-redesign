@@ -649,8 +649,8 @@ footer{
   position:absolute;inset:0;z-index:1;
   background:linear-gradient(135deg,rgba(26,27,79,.93) 0%,rgba(38,39,110,.91) 55%,rgba(20,21,60,.95) 100%);
 }
-.course-hero .slide-inner{position:relative;z-index:2;margin:0 auto;display:flex;flex-direction:column;align-items:center;max-width:760px}
-.course-hero .slide-title{text-align:center}
+.course-hero .slide-inner{position:relative;z-index:2;margin:0 auto;display:flex;flex-direction:column;align-items:center;max-width:920px}
+.course-hero .slide-title{text-align:center;font-size:clamp(26px,3.4vw,40px);max-width:880px}
 .course-hero .slide-sub{text-align:center;margin-left:auto;margin-right:auto}
 .course-hero .slide-chips{justify-content:center}
 .course-hero .slide-ctas{justify-content:center}
