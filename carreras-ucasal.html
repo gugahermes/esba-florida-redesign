@@ -3,15 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carreras Universitarias UCASAL - ESBA Florida</title>
-<meta name="description" content="ESBA Florida, sede autorizada de la Universidad Católica de Salta (UCASAL) para inscripción y seguimiento de carreras universitarias a distancia.">
+<title>Carreras Universitarias UCASAL a Distancia - ESBA Florida</title>
+<meta name="description" content="ESBA Florida, sede de apoyo de la Universidad Católica de Salta (UCASAL) para carreras a distancia: tecnicaturas, licenciaturas y ciclos de complementación.">
 <link rel="canonical" href="https://esbaflorida.edu.ar/carreras-ucasal.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles.css">
+<style>
+/* Paleta invertida para esta sección: UCASAL es roja-primaria / azul-secundaria,
+   al revés de ESBA (azul-primaria / roja-secundaria). Mismos 2 colores de marca, roles invertidos. */
+.ucasal-page .sec-label{color:var(--azul)}
+.ucasal-page .sec-title{color:var(--rojo)}
+.ucasal-page .cert-icon{background:var(--rojo)}
+.ucasal-page .pcard-badge{background:var(--azul)}
+.ucasal-page .contact-sec{background:var(--rojo)}
+.ucasal-item{transition:background .15s,transform .15s;cursor:pointer}
+.ucasal-item:hover{background:#fff;box-shadow:0 6px 18px rgba(191,4,17,.12);transform:translateX(2px)}
+.ucasal-item svg{stroke:var(--rojo)}
+.ucasal-cat-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--azul);background:rgba(38,39,110,.07);padding:5px 12px;border-radius:50px;margin-bottom:14px}
+</style>
 </head>
-<body>
+<body class="ucasal-page">
 
 <header id="hdr">
   <div class="hdr">
@@ -70,26 +83,29 @@
   </div>
 </header>
 
-<section class="course-hero">
+<!-- ── HERO (paleta invertida: rojo dominante) ─────────── -->
+<section class="course-hero" style="background:linear-gradient(135deg,#90191C 0%,#BF0411 55%,#6e0c14 100%)">
   <div class="slide-inner">
-    <div class="slide-tag"><span class="slide-tag-dot"></span>Sede autorizada UCASAL</div>
-    <h1 class="slide-title">Carreras Universitarias<br>UCASAL</h1>
-    <p class="slide-sub">ESBA Florida es sede autorizada de la <strong>Universidad Católica de Salta</strong> para la inscripción y el seguimiento académico a distancia. Estamos terminando de publicar el detalle completo de carreras, duración y aranceles.</p>
+    <div class="slide-tag"><span class="slide-tag-dot"></span>Sede de apoyo UCASAL</div>
+    <h1 class="slide-title">Carreras Universitarias<br>UCASAL a Distancia</h1>
+    <p class="slide-sub">ESBA Florida es sede de apoyo de la <strong>Universidad Católica de Salta</strong> para la inscripción y el seguimiento académico de sus carreras a distancia: tecnicaturas, licenciaturas, ciclos de complementación y posgrados.</p>
     <div class="slide-chips">
-      <span class="chip"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>A distancia</span>
+      <span class="chip"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>100% a distancia</span>
       <span class="chip"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>Título universitario UCASAL</span>
     </div>
     <div class="slide-ctas">
-      <a href="https://wa.me/5491157400965?text=Hola!%20Quiero%20informaci%C3%B3n%20sobre%20las%20Carreras%20Universitarias%20UCASAL." class="btn-rojo" target="_blank" rel="noopener noreferrer">Quiero que me contacten</a>
+      <a href="#oferta" class="btn-rojo" style="background:var(--azul)">Ver oferta académica ↓</a>
+      <a href="https://wa.me/5491157400965?text=Hola!%20Quiero%20informaci%C3%B3n%20sobre%20las%20Carreras%20UCASAL%20a%20Distancia." class="btn-ghost" target="_blank" rel="noopener noreferrer">Consultar ahora →</a>
     </div>
   </div>
 </section>
 
+<!-- ── CÓMO FUNCIONA ────────────────────────────────────── -->
 <section class="sec">
   <div class="sec-inner">
     <p class="sec-label">Cómo funciona</p>
-    <h2 class="sec-title">¿Qué es ser sede autorizada UCASAL?</h2>
-    <p class="sec-sub">La Universidad Católica de Salta dicta las carreras y emite los títulos universitarios. ESBA Florida funciona como sede de apoyo: te acompañamos en la inscripción, el seguimiento académico y, cuando corresponda, en instancias presenciales locales.</p>
+    <h2 class="sec-title">¿Qué es ser sede de apoyo UCASAL?</h2>
+    <p class="sec-sub">La Universidad Católica de Salta dicta las carreras y emite los títulos universitarios. ESBA Florida te acompaña en la inscripción y el seguimiento académico desde nuestra sede de Olivos.</p>
     <div class="temario-grid" style="grid-template-columns:1fr">
       <div class="temario-item" style="align-items:flex-start"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Inscripción guiada</strong><br>Te ayudamos con todo el proceso de inscripción a la universidad.</span></div>
       <div class="temario-item" style="align-items:flex-start"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Seguimiento académico local</strong><br>Acompañamiento desde nuestra sede de Olivos durante toda la carrera.</span></div>
@@ -98,15 +114,75 @@
   </div>
 </section>
 
-<section class="sec" style="padding-top:0;background:var(--gris-claro)">
-  <div class="sec-inner" style="text-align:center">
-    <p class="sec-label">Estamos terminando esta sección</p>
-    <h2 class="sec-title">El listado completo de carreras<br>está casi listo</h2>
-    <p class="sec-sub" style="margin:0 auto 28px">Mientras publicamos el detalle de cada carrera disponible, escribinos por WhatsApp: un asesor te cuenta qué opciones tenés hoy y te avisa apenas esté toda la información online.</p>
-    <a href="https://wa.me/5491157400965?text=Hola!%20Quiero%20que%20me%20avisen%20cuando%20est%C3%A9%20disponible%20el%20detalle%20de%20Carreras%20UCASAL." class="btn-rojo" target="_blank" rel="noopener noreferrer" style="display:inline-flex">Avisarme cuando esté disponible</a>
+<!-- ── OFERTA ACADÉMICA ─────────────────────────────────── -->
+<section class="sec" id="oferta" style="background:var(--gris-claro);padding-top:60px">
+  <div class="sec-inner">
+    <p class="sec-label">Oferta académica a distancia</p>
+    <h2 class="sec-title">Elegí tu carrera</h2>
+    <p class="sec-sub">Tocá cualquier carrera para consultar por WhatsApp. Esta es la oferta a distancia vigente de UCASAL — confirmamos con un asesor la disponibilidad de cupos para cada una.</p>
+
+    <span class="ucasal-cat-tag">Tecnicaturas universitarias · 2-3 años</span>
+    <div class="temario-grid" style="margin-bottom:36px">
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Tecnicatura%20Universitaria%20en%20Seguridad%20Inform%C3%A1tica%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Tecnicatura Universitaria en Seguridad Informática</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Tecnicatura%20Universitaria%20en%20Secretariado%20Ejecutivo%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Tecnicatura Universitaria en Secretariado Ejecutivo</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Tecnicatura%20Universitaria%20en%20Organizaci%C3%B3n%20y%20Direcci%C3%B3n%20de%20Eventos%20y%20Ceremonial%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Tecnicatura Universitaria en Organización y Dirección de Eventos y Ceremonial</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Tecnicatura%20en%20Operaciones%20Mineras%20e%20Industriales%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Tecnicatura en Operaciones Mineras e Industriales</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Tecnicatura%20Universitaria%20en%20Gesti%C3%B3n%20de%20Calidad%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Tecnicatura Universitaria en Gestión de Calidad</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Tecnicatura%20en%20Gesti%C3%B3n%20de%20Bancos%2C%20Empresas%20Financieras%20y%20de%20Seguros%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Tecnicatura en Gestión de Bancos, Empresas Financieras y de Seguros</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Gu%C3%ADa%20Universitario%20en%20Turismo%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Guía Universitario en Turismo</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Tecnicatura%20en%20Higiene%20y%20Seguridad%20en%20el%20Trabajo%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Tecnicatura en Higiene y Seguridad en el Trabajo</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Procuraci%C3%B3n%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Procuración</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Corredor%20Inmobiliario%20y%20Martillero%20P%C3%BAblico%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Corredor Inmobiliario y Martillero Público</span></a>
+    </div>
+
+    <span class="ucasal-cat-tag">Licenciaturas y carreras de grado</span>
+    <div class="temario-grid" style="margin-bottom:36px">
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Abogac%C3%ADa%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Abogacía</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Contador%20P%C3%BAblico%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Contador Público</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Administraci%C3%B3n%20de%20Empresas%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Administración de Empresas</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Administraci%C3%B3n%20Agropecuaria%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Administración Agropecuaria</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Comercializaci%C3%B3n%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Comercialización</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Comercio%20Internacional%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Comercio Internacional</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Ciencia%20de%20Datos%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Ciencia de Datos</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Econom%C3%ADa%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Economía</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Administraci%C3%B3n%20de%20Negocios%20Digitales%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Administración de Negocios Digitales</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Criminolog%C3%ADa%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Criminología</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Gesti%C3%B3n%20Eficiente%20de%20la%20Energ%C3%ADa%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Gestión Eficiente de la Energía</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Recursos%20Humanos%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Recursos Humanos</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Relaciones%20Internacionales%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Relaciones Internacionales</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Relaciones%20P%C3%BAblicas%20e%20Institucionales%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Relaciones Públicas e Institucionales</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Turismo%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Turismo</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Higiene%20y%20Seguridad%20en%20el%20Trabajo%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Higiene y Seguridad en el Trabajo</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Escriban%C3%ADa%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Escribanía</span></a>
+    </div>
+
+    <span class="ucasal-cat-tag">Ciclos de complementación curricular</span>
+    <p style="font-size:13.5px;color:var(--muted);margin-bottom:16px;max-width:640px">Para quienes ya tienen un título terciario o universitario afín y quieren obtener la licenciatura completa en menos tiempo.</p>
+    <div class="temario-grid">
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Educaci%C3%B3n%20F%C3%ADsica%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Educación Física</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Entrenamiento%20Deportivo%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Entrenamiento Deportivo</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Gesti%C3%B3n%20Educativa%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Gestión Educativa</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Lenguajes%20Expresivos%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Lenguajes Expresivos</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Seguridad%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Seguridad</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Recreaci%C3%B3n%20y%20Ocio%20Educativo%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Recreación y Ocio Educativo</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Comercio%20Internacional%20%28ciclo%29%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Comercio Internacional (ciclo)</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Corretaje%2C%20Tasaci%C3%B3n%20y%20Administraci%C3%B3n%20de%20Consorcios%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Corretaje, Tasación y Administración de Consorcios</span></a>
+      <a href="https://wa.me/5491157400965?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20Licenciatura%20en%20Criminolog%C3%ADa%20%28ciclo%29%20%28UCASAL%29%20a%20trav%C3%A9s%20de%20ESBA%20Florida." target="_blank" rel="noopener noreferrer" class="temario-item ucasal-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Licenciatura en Criminología (ciclo)</span></a>
+    </div>
   </div>
 </section>
 
+<!-- ── POSGRADOS ────────────────────────────────────────── -->
+<section class="sec" style="padding-top:0;text-align:center">
+  <div class="sec-inner">
+    <p class="sec-label">También disponible</p>
+    <h2 class="sec-title">+29 posgrados a distancia</h2>
+    <p class="sec-sub" style="margin:0 auto 24px">Doctorados, maestrías y especializaciones en áreas como ciencias empresariales, ciencia de datos, gestión ambiental, RRHH y más. Consultanos por el posgrado que te interesa.</p>
+    <a href="https://wa.me/5491157400965?text=Hola!%20Quiero%20informaci%C3%B3n%20sobre%20posgrados%20UCASAL%20a%20distancia." class="btn-rojo" target="_blank" rel="noopener noreferrer" style="display:inline-flex">Consultar posgrados</a>
+  </div>
+</section>
+
+<!-- ── CONTACTO (rojo dominante) ─────────────────────────── -->
 <section class="contact-sec" id="contacto">
   <div class="contact-inner">
     <div class="contact-text">
@@ -124,6 +200,13 @@
         <div>
           <p class="citem-label">Modalidad</p>
           <p class="citem-val">A distancia, con sede de apoyo en Olivos</p>
+        </div>
+      </div>
+      <div class="citem">
+        <div class="citem-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
+        <div>
+          <p class="citem-label">Fuente de la oferta académica</p>
+          <p class="citem-val"><a href="https://www.ucasal.edu.ar/menu-oferta-educativa-por-modalidad/a-distancia" target="_blank" rel="noopener noreferrer">ucasal.edu.ar</a></p>
         </div>
       </div>
     </div>
