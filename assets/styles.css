@@ -631,3 +631,49 @@ footer{
   0%,100%{box-shadow:0 4px 22px rgba(37,211,102,.55)}
   50%{box-shadow:0 4px 32px rgba(37,211,102,.8),0 0 0 10px rgba(37,211,102,.1)}
 }
+
+/* ── CURSO: HERO ─────────────────────────────────────── */
+.course-hero{
+  margin-top:70px;
+  padding:90px 32px 70px;
+  background:linear-gradient(135deg,#26276E 0%,#3A3B8F 60%,#1a1b4f 100%);
+  text-align:center;
+}
+.course-hero .slide-inner{margin:0 auto;display:flex;flex-direction:column;align-items:center;max-width:760px}
+.course-hero .slide-title{text-align:center}
+.course-hero .slide-sub{text-align:center;margin-left:auto;margin-right:auto}
+.course-hero .slide-chips{justify-content:center}
+.course-hero .slide-ctas{justify-content:center}
+
+/* ── CURSO: DATOS RÁPIDOS ─────────────────────────────── */
+.course-facts{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 44px}
+.course-fact{
+  display:flex;align-items:center;gap:8px;
+  background:var(--gris-claro);border:1px solid var(--gris-med);
+  padding:10px 16px;border-radius:50px;font-size:13px;font-weight:600;color:var(--azul);
+}
+.course-fact svg{width:15px;height:15px;stroke:var(--azul);fill:none;stroke-width:2;flex-shrink:0}
+
+/* ── CURSO: TEMARIO ───────────────────────────────────── */
+.temario-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(max-width:700px){.temario-grid{grid-template-columns:1fr}}
+.temario-item{
+  display:flex;gap:12px;align-items:flex-start;
+  padding:16px 18px;background:var(--gris-claro);
+  border-radius:12px;font-size:14px;color:var(--texto);line-height:1.5;
+}
+.temario-item svg{flex-shrink:0;width:18px;height:18px;margin-top:2px;stroke:var(--rojo);fill:none;stroke-width:2.2}
+
+/* ── CURSO: CERTIFICACIÓN ─────────────────────────────── */
+.cert-box{
+  display:flex;gap:20px;align-items:flex-start;
+  background:var(--gris-claro);border-radius:18px;
+  padding:32px;margin-top:10px;
+}
+.cert-icon{
+  width:52px;height:52px;flex-shrink:0;border-radius:14px;
+  background:var(--azul);display:flex;align-items:center;justify-content:center;
+}
+.cert-icon svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:1.8}
+.cert-box p{font-size:14.5px;color:var(--muted);line-height:1.7}
+.cert-box p strong{color:var(--azul)}
