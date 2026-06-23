@@ -125,12 +125,7 @@ nav{display:flex;align-items:center;gap:2px}
   .nav-item.open .drop{max-height:600px}
   .drop a{padding:13px 4px 13px 18px;font-size:14.5px;border-bottom:1px solid var(--gris-med)}
   .drop-divider{display:none}
-  .btn-wa-hdr{order:2;padding:8px 14px;font-size:12.5px}
-  .btn-wa-hdr span{display:none}
-}
-@media(max-width:380px){
-  .btn-wa-hdr{padding:8px;width:34px;height:34px;justify-content:center;border-radius:50%}
-  .btn-wa-hdr svg{width:16px;height:16px;margin:0}
+  .btn-wa-hdr{display:none}
 }
 
 /* ── SLIDER ──────────────────────────────────────────── */
