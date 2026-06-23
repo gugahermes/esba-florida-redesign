@@ -10,8 +10,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles.css">
+<style>
+.inst-page .course-hero{padding:54px 32px 44px}
+.inst-page .course-hero .slide-title{font-size:clamp(22px,2.7vw,32px);max-width:760px;white-space:nowrap}
+.inst-page .course-hero .slide-sub{margin-top:4px}
+@media(max-width:700px){.inst-page .course-hero .slide-title{white-space:normal;font-size:clamp(20px,5vw,26px)}}
+.conv-logo-box{
+  width:72px;height:72px;flex-shrink:0;border-radius:12px;
+  background:#fff;border:1px solid var(--gris-med);
+  display:flex;align-items:center;justify-content:center;padding:8px;
+}
+.conv-logo-box img{max-width:100%;max-height:100%;object-fit:contain}
+</style>
 </head>
-<body>
+<body class="inst-page">
 
 <header id="hdr">
   <div class="hdr">
@@ -51,6 +63,7 @@
       </div>
       <a href="sedes.html" class="nav-link">Sedes</a>
       <a href="institucional.html" class="nav-link">Institucional</a>
+      <a href="blog.html" class="nav-link">Blog</a>
       <a href="#contacto" class="nav-link">Contacto</a>
     </nav>
 
@@ -67,7 +80,7 @@
 <section class="course-hero">
   <div class="slide-inner">
     <div class="slide-tag"><span class="slide-tag-dot"></span>Institucional</div>
-    <h1 class="slide-title">Autoridades, historia<br>y convenios institucionales</h1>
+    <h1 class="slide-title">Autoridades, Historia y Convenios</h1>
     <p class="slide-sub">ESBA Florida es una institución educativa privada autorizada en la Provincia de Buenos Aires, con sede en Olivos, Vicente López.</p>
     <div class="slide-chips">
       <span class="chip"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>DIEGEP N° 6278</span>
@@ -96,8 +109,8 @@
   <div class="sec-inner">
     <p class="sec-label">Quiénes somos</p>
     <h2 class="sec-title">Nuestra historia</h2>
-    <p class="sec-sub" style="margin-bottom:24px">ESBA Florida es una institución educativa privada autorizada en la Provincia de Buenos Aires (DIEGEP N° 6278, Resolución 6794/00), con sede en Avellaneda 2542, Olivos, Vicente López.</p>
-    <p class="sec-sub" style="margin-bottom:24px">A lo largo de su trayectoria, ESBA Florida amplió su propuesta educativa más allá del bachillerato acelerado para adultos: hoy combina esa oferta histórica con cursos presenciales con salida laboral, tecnicaturas de nivel superior y carreras universitarias a distancia junto a la Universidad Católica de Salta (UCASAL), consolidándose como una institución con múltiples caminos de formación para adultos.</p>
+    <p class="sec-sub" style="margin-bottom:24px">ESBA Florida es una institución educativa privada autorizada en la Provincia de Buenos Aires (DIEGEP N° 6278, Resolución 6794/00), con más de 25 años de trayectoria y sede en Avellaneda 2542, Olivos, Vicente López.</p>
+    <p class="sec-sub" style="margin-bottom:24px">A lo largo de esos 25 años, ESBA Florida amplió su propuesta educativa más allá del bachillerato acelerado para adultos: hoy combina esa oferta histórica con cursos presenciales con salida laboral, tecnicaturas de nivel superior y carreras universitarias a distancia junto a la Universidad Católica de Salta (UCASAL), consolidándose como una institución con múltiples caminos de formación para adultos.</p>
     <p class="sec-sub">Nuestro compromiso sigue siendo el mismo desde el primer día: educación de calidad al alcance de todos, con acompañamiento real durante todo el proceso de estudio.</p>
   </div>
 </section>
@@ -110,27 +123,27 @@
     <p class="sec-sub">Convenios marco que ofrecen beneficios y descuentos a empleados y sus familias directas.</p>
     <div class="temario-grid" style="grid-template-columns:1fr">
       <div class="cert-box" style="margin-top:0">
-        <div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="conv-logo-box"><img src="assets/conv-mundo-juguete.jpg" alt="El Mundo del Juguete"></div>
         <p><strong style="color:var(--azul)">El Mundo del Juguete</strong> <span style="color:var(--muted);font-size:12.5px">· Marzo 2011</span><br>Convenio marco para el desarrollo profesional y la formación académica, con beneficios de descuento.</p>
       </div>
       <div class="cert-box" style="margin-top:0">
-        <div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="conv-logo-box"><img src="assets/conv-nobleza.jpg" alt="Nobleza Piccardo"></div>
         <p><strong style="color:var(--azul)">Nobleza Piccardo</strong> <span style="color:var(--muted);font-size:12.5px">· 2 de mayo de 2006</span><br>Convenio marco de capacitación profesional y oportunidades educativas, con descuentos significativos para empleados y familiares.</p>
       </div>
       <div class="cert-box" style="margin-top:0">
-        <div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="conv-logo-box"><img src="assets/conv-atos.jpg" alt="Atos Origin"></div>
         <p><strong style="color:var(--azul)">Atos Origin</strong> <span style="color:var(--muted);font-size:12.5px">· Mayo 2011</span><br>Convenio con esta empresa internacional de servicios de IT para el desarrollo profesional y la formación académica, con descuentos para empleados.</p>
       </div>
       <div class="cert-box" style="margin-top:0">
-        <div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="conv-logo-box"><img src="assets/conv-telecom.jpg" alt="Telecom Argentina"></div>
         <p><strong style="color:var(--azul)">Telecom Argentina</strong> <span style="color:var(--muted);font-size:12.5px">· 19 de julio de 2011</span><br>Convenio que crea espacios de formación profesional y académica, con reducciones significativas en el costo de la cuota.</p>
       </div>
       <div class="cert-box" style="margin-top:0">
-        <div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="conv-logo-box"><img src="assets/conv-cicsa.jpg" alt="Cicsa"></div>
         <p><strong style="color:var(--azul)">Cicsa</strong> <span style="color:var(--muted);font-size:12.5px">· 6 de marzo de 2012</span><br>Convenio para impulsar el desarrollo educativo y profesional en toda nuestra oferta académica, con cuotas reducidas.</p>
       </div>
       <div class="cert-box" style="margin-top:0">
-        <div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="conv-logo-box"><img src="assets/conv-sutira.jpg" alt="Sutira"></div>
         <p><strong style="color:var(--azul)">Sutira</strong> <span style="color:var(--muted);font-size:12.5px">· 10 de septiembre de 2014</span><br>Convenio con el Sindicato Único de Trabajadores Informáticos para el desarrollo profesional y la formación de sus afiliados y familiares directos, con importantes reducciones de costo.</p>
       </div>
     </div>
@@ -203,6 +216,7 @@
         <li><a href="institucional.html#convenios">Convenios</a></li>
         <li><a href="sedes.html">Sedes</a></li>
         <li><a href="#">Campus virtual</a></li>
+        <li><a href="blog.html">Blog</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </div>
