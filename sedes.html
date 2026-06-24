@@ -348,6 +348,27 @@ nav{display:flex;align-items:center;gap:2px}
 }
 .btn-sede-tel:hover{border-color:var(--azul);background:var(--azul);color:#fff}
 .btn-sede-tel svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
+.btn-sede-maps{
+  display:flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:50%;
+  border:1.5px solid var(--gris-med);color:var(--rojo);
+  transition:all .2s;flex-shrink:0;
+}
+.btn-sede-maps:hover{border-color:var(--rojo);background:var(--rojo);color:#fff}
+.btn-sede-maps svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* ── MAPA INTERACTIVO ─────────────────────────────────── */
+.sedes-map-sec{margin-bottom:36px}
+.sedes-map-sec .sec-label{margin-bottom:14px}
+#sedes-map{
+  width:100%;height:440px;border-radius:18px;
+  border:1px solid var(--gris-med);
+  background:var(--gris-claro);
+}
+.map-infobox{font-family:'Montserrat',sans-serif;padding:4px 2px;max-width:220px}
+.map-infobox strong{display:block;font-size:14px;color:var(--azul);margin-bottom:4px}
+.map-infobox span{display:block;font-size:12.5px;color:var(--muted);line-height:1.5;margin-bottom:6px}
+.map-infobox a{font-size:12.5px;font-weight:600;color:var(--rojo)}
 
 /* ── CTA: CONVERTIRSE EN SEDE ────────────────────────── */
 .cta-sede-sec{
@@ -565,6 +586,7 @@ footer{background:#0d0e33;padding:52px 32px 24px}
       <button class="ftab" data-zone="gba-sur">GBA Sur</button>
       <button class="ftab" data-zone="caba">CABA</button>
       <button class="ftab" data-zone="interior">Interior Pcia.</button>
+      <button class="ftab" data-zone="otras-provincias">Otras Provincias</button>
     </div>
   </div>
 </div>
@@ -576,7 +598,7 @@ footer{background:#0d0e33;padding:52px 32px 24px}
     <!-- SEDE CENTRAL -->
     <div class="sede-central-wrap">
       <div class="sec-label">Sede principal</div>
-      <div class="sede-central">
+      <div class="sede-central" data-lat="-34.5153132" data-lng="-58.4945715" data-nombre="ESBA Florida — Olivos (Sede Central)">
         <div class="sc-body">
           <span class="sc-badge">
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -590,15 +612,13 @@ footer{background:#0d0e33;padding:52px 32px 24px}
               <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
               <div class="sc-row-text">
                 <strong>Dirección</strong>
-                <!-- REEMPLAZAR con dirección real -->
-                Av. Maipú 1234, Olivos, Vicente López, Buenos Aires
+                Av. Nicolás Avellaneda 2542, Olivos, Vicente López, Buenos Aires (B1636ASJ)
               </div>
             </div>
             <div class="sc-row">
               <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
               <div class="sc-row-text">
                 <strong>Teléfono / WhatsApp</strong>
-                <!-- REEMPLAZAR con número real -->
                 11 5740-0965
               </div>
             </div>
@@ -606,7 +626,6 @@ footer{background:#0d0e33;padding:52px 32px 24px}
               <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               <div class="sc-row-text">
                 <strong>Horario de atención</strong>
-                <!-- REEMPLAZAR con horario real -->
                 Lunes a viernes de 9 a 18 hs · Sábados de 9 a 13 hs
               </div>
             </div>
@@ -673,11 +692,191 @@ footer{background:#0d0e33;padding:52px 32px 24px}
         <div class="subsedes-count" id="sedes-count">Mostrando 12 sedes</div>
       </div>
 
+      <div class="sedes-map-sec">
+        <div id="sedes-map"></div>
+      </div>
+
       <div class="sedes-grid" id="sedes-grid">
 
-        <!-- ═══ SUBSEDE 1 ═══ COMPLETAR CON DATOS REALES ═══ -->
-        <div class="sede-card" data-zone="gba-norte">
+        <div class="sede-card" data-zone="caba" data-lat="-34.5962652" data-lng="-58.3986319" data-nombre="Sede Barrio Norte">
           <div class="sede-card-top turquesa"></div>
+          <div class="sede-card-body">
+            <span class="sede-zona-badge">CABA</span>
+            <div class="sede-nombre">Sede Barrio Norte</div>
+            <div class="sede-ciudad">Buenos Aires</div>
+            <div class="sede-datos">
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="sede-dato-txt">Uriburu 1045</div>
+              </div>
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <div class="sede-dato-txt">4821-0866</div>
+              </div>
+            </div>
+          </div>
+          <div class="sede-card-footer">
+            <a href="tel:+541148210866" class="btn-sede-tel" aria-label="Llamar">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </a>
+            <a href="mailto:infoesbabn@esbabarrionorte.edu.ar" class="btn-sede-tel" aria-label="Email">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=-34.5962652,-58.3986319" target="_blank" rel="noopener noreferrer" class="btn-sede-maps" aria-label="Cómo llegar">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="sede-card" data-zone="gba-norte" data-lat="-34.4573539" data-lng="-58.9146287" data-nombre="Sede Pilar">
+          <div class="sede-card-top celeste"></div>
+          <div class="sede-card-body">
+            <span class="sede-zona-badge">GBA Norte</span>
+            <div class="sede-nombre">Sede Pilar</div>
+            <div class="sede-ciudad">Pilar, Provincia de Buenos Aires</div>
+            <div class="sede-datos">
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="sede-dato-txt">San Martín 536</div>
+              </div>
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <div class="sede-dato-txt">11 3773-9970 <small>esbapilar.com.ar</small></div>
+              </div>
+            </div>
+          </div>
+          <div class="sede-card-footer">
+            <a href="https://wa.me/5491137739970?text=Hola!%20Quiero%20informaci%C3%B3n%20sobre%20ESBA%20Pilar." class="btn-sede-wa" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              WhatsApp
+            </a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=-34.4573539,-58.9146287" target="_blank" rel="noopener noreferrer" class="btn-sede-maps" aria-label="Cómo llegar">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="sede-card" data-zone="gba-sur" data-lat="-34.7057478" data-lng="-58.3919430" data-nombre="Sede Lanús">
+          <div class="sede-card-top lila"></div>
+          <div class="sede-card-body">
+            <span class="sede-zona-badge">GBA Sur</span>
+            <div class="sede-nombre">Sede Lanús</div>
+            <div class="sede-ciudad">Lanús Oeste, Buenos Aires</div>
+            <div class="sede-datos">
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="sede-dato-txt">Hipólito Irigoyen 4407, 1° L</div>
+              </div>
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <div class="sede-dato-txt">11 2174-8633</div>
+              </div>
+            </div>
+          </div>
+          <div class="sede-card-footer">
+            <a href="https://wa.me/541121748633?text=Hola!%20Quiero%20informaci%C3%B3n%20sobre%20ESBA%20Lan%C3%BAs." class="btn-sede-wa" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              WhatsApp
+            </a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=-34.7057478,-58.3919430" target="_blank" rel="noopener noreferrer" class="btn-sede-maps" aria-label="Cómo llegar">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="sede-card" data-zone="interior" data-lat="-38.0042266" data-lng="-57.5534862" data-nombre="Sede Mar del Plata">
+          <div class="sede-card-top verde"></div>
+          <div class="sede-card-body">
+            <span class="sede-zona-badge">Interior Pcia.</span>
+            <div class="sede-nombre">Sede Mar del Plata</div>
+            <div class="sede-ciudad">Mar del Plata, Buenos Aires</div>
+            <div class="sede-datos">
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="sede-dato-txt">Falucho 2802</div>
+              </div>
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <div class="sede-dato-txt">223 675-0956 <small>esbaflorida.edu.ar/landings/mardelplata-virtual</small></div>
+              </div>
+            </div>
+          </div>
+          <div class="sede-card-footer">
+            <a href="https://wa.me/5492236750956?text=Hola!%20Quiero%20informaci%C3%B3n%20sobre%20ESBA%20Mar%20del%20Plata." class="btn-sede-wa" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              WhatsApp
+            </a>
+            <a href="mailto:mardelplata@esbaflorida.edu.ar" class="btn-sede-tel" aria-label="Email">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=-38.0042266,-57.5534862" target="_blank" rel="noopener noreferrer" class="btn-sede-maps" aria-label="Cómo llegar">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="sede-card" data-zone="gba-norte" data-lat="-34.3479209" data-lng="-58.7952289" data-nombre="Sede Escobar">
+          <div class="sede-card-top turquesa"></div>
+          <div class="sede-card-body">
+            <span class="sede-zona-badge">GBA Norte</span>
+            <div class="sede-nombre">Sede Escobar</div>
+            <div class="sede-ciudad">Belén de Escobar, Buenos Aires</div>
+            <div class="sede-datos">
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="sede-dato-txt">Av. Eugenia Tapia de Cruz 738, 2° piso</div>
+              </div>
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <div class="sede-dato-txt">(0348) 442-6382 <small>esbaescobar.com.ar</small></div>
+              </div>
+            </div>
+          </div>
+          <div class="sede-card-footer">
+            <a href="tel:+543484426382" class="btn-sede-tel" aria-label="Llamar">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </a>
+            <a href="mailto:info@esbaescobar.com.ar" class="btn-sede-tel" aria-label="Email">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=-34.3479209,-58.7952289" target="_blank" rel="noopener noreferrer" class="btn-sede-maps" aria-label="Cómo llegar">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="sede-card" data-zone="gba-norte" data-lat="-34.4374375" data-lng="-58.5596474" data-nombre="Sede San Fernando">
+          <div class="sede-card-top celeste"></div>
+          <div class="sede-card-body">
+            <span class="sede-zona-badge">GBA Norte</span>
+            <div class="sede-nombre">Sede San Fernando</div>
+            <div class="sede-ciudad">San Fernando, Buenos Aires</div>
+            <div class="sede-datos">
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="sede-dato-txt">Av. Perón 600</div>
+              </div>
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <div class="sede-dato-txt">4744-0624</div>
+              </div>
+            </div>
+          </div>
+          <div class="sede-card-footer">
+            <a href="tel:+541147440624" class="btn-sede-tel" aria-label="Llamar">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </a>
+            <a href="mailto:institutovydra@arnet.com.ar" class="btn-sede-tel" aria-label="Email">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=-34.4374375,-58.5596474" target="_blank" rel="noopener noreferrer" class="btn-sede-maps" aria-label="Cómo llegar">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="sede-card" data-zone="gba-norte" data-lat="-34.4642898" data-lng="-58.5100401" data-nombre="Sede San Isidro">
+          <div class="sede-card-top lila"></div>
           <div class="sede-card-body">
             <span class="sede-zona-badge">GBA Norte</span>
             <div class="sede-nombre">Sede San Isidro</div>
@@ -685,230 +884,164 @@ footer{background:#0d0e33;padding:52px 32px 24px}
             <div class="sede-datos">
               <div class="sede-dato">
                 <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <div class="sede-dato-txt">Av. Libertador 000 <small><!-- dirección real --></small></div>
+                <div class="sede-dato-txt">Primera Junta 817</div>
               </div>
               <div class="sede-dato">
                 <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                <div class="sede-dato-txt">11 XXXX-XXXX <small>Bachillerato para adultos</small></div>
+                <div class="sede-dato-txt">4743-7180</div>
               </div>
             </div>
           </div>
           <div class="sede-card-footer">
-            <a href="https://wa.me/549XXXXXXXXXX" class="btn-sede-wa" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
-              WhatsApp
-            </a>
-            <a href="tel:+54911XXXXXXXX" class="btn-sede-tel">
+            <a href="tel:+541147437180" class="btn-sede-tel" aria-label="Llamar">
               <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </a>
+            <a href="mailto:institutovydra@arnet.com.ar" class="btn-sede-tel" aria-label="Email">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=-34.4642898,-58.5100401" target="_blank" rel="noopener noreferrer" class="btn-sede-maps" aria-label="Cómo llegar">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </a>
           </div>
         </div>
 
-        <!-- ═══ SUBSEDE 2 ═══ -->
-        <div class="sede-card" data-zone="gba-norte">
+        <div class="sede-card" data-zone="gba-oeste" data-lat="-34.5403600" data-lng="-58.7130593" data-nombre="Sede San Miguel">
+          <div class="sede-card-top verde"></div>
+          <div class="sede-card-body">
+            <span class="sede-zona-badge">GBA Oeste</span>
+            <div class="sede-nombre">Sede San Miguel</div>
+            <div class="sede-ciudad">San Miguel, Buenos Aires</div>
+            <div class="sede-datos">
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="sede-dato-txt">Paunero 1721</div>
+              </div>
+              <div class="sede-dato">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <div class="sede-dato-txt">6062-7257 <small>esbasanmiguel.com.ar</small></div>
+              </div>
+            </div>
+          </div>
+          <div class="sede-card-footer">
+            <a href="tel:+541160627257" class="btn-sede-tel" aria-label="Llamar">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </a>
+            <a href="mailto:info@esbasanmiguel.com.ar" class="btn-sede-tel" aria-label="Email">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=-34.5403600,-58.7130593" target="_blank" rel="noopener noreferrer" class="btn-sede-maps" aria-label="Cómo llegar">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="sede-card" data-zone="otras-provincias" data-lat="-32.4822882" data-lng="-58.2326690" data-nombre="Sede Concepción del Uruguay">
           <div class="sede-card-top turquesa"></div>
           <div class="sede-card-body">
-            <span class="sede-zona-badge">GBA Norte</span>
-            <div class="sede-nombre">Sede Pilar</div>
-            <div class="sede-ciudad">Pilar, Buenos Aires</div>
+            <span class="sede-zona-badge">Entre Ríos</span>
+            <div class="sede-nombre">Sede Concepción del Uruguay</div>
+            <div class="sede-ciudad">Concepción del Uruguay, Entre Ríos</div>
             <div class="sede-datos">
               <div class="sede-dato">
                 <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <div class="sede-dato-txt">Av. Derqui 000 <small><!-- dirección real --></small></div>
+                <div class="sede-dato-txt">25 de Mayo 165</div>
               </div>
               <div class="sede-dato">
                 <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                <div class="sede-dato-txt">11 XXXX-XXXX <small>Bachillerato para adultos</small></div>
+                <div class="sede-dato-txt">3442 41-9239</div>
               </div>
             </div>
           </div>
           <div class="sede-card-footer">
-            <a href="https://wa.me/549XXXXXXXXXX" class="btn-sede-wa" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
-              WhatsApp
-            </a>
-            <a href="tel:+54911XXXXXXXX" class="btn-sede-tel">
+            <a href="tel:+543442419239" class="btn-sede-tel" aria-label="Llamar">
               <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </a>
+            <a href="mailto:cu@esbaflorida.edu.ar" class="btn-sede-tel" aria-label="Email">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=-32.4822882,-58.2326690" target="_blank" rel="noopener noreferrer" class="btn-sede-maps" aria-label="Cómo llegar">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </a>
           </div>
         </div>
 
-        <!-- ═══ SUBSEDE 3 ═══ -->
-        <div class="sede-card" data-zone="gba-oeste">
-          <div class="sede-card-top verde"></div>
-          <div class="sede-card-body">
-            <span class="sede-zona-badge">GBA Oeste</span>
-            <div class="sede-nombre">Sede Morón</div>
-            <div class="sede-ciudad">Morón, Buenos Aires</div>
-            <div class="sede-datos">
-              <div class="sede-dato">
-                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <div class="sede-dato-txt">Calle 000, Morón <small><!-- dirección real --></small></div>
-              </div>
-              <div class="sede-dato">
-                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                <div class="sede-dato-txt">11 XXXX-XXXX <small>Bachillerato para adultos</small></div>
-              </div>
-            </div>
-          </div>
-          <div class="sede-card-footer">
-            <a href="https://wa.me/549XXXXXXXXXX" class="btn-sede-wa" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
-              WhatsApp
-            </a>
-            <a href="tel:+54911XXXXXXXX" class="btn-sede-tel">
-              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- ═══ SUBSEDE 4 ═══ -->
-        <div class="sede-card" data-zone="gba-oeste">
-          <div class="sede-card-top verde"></div>
-          <div class="sede-card-body">
-            <span class="sede-zona-badge">GBA Oeste</span>
-            <div class="sede-nombre">Sede La Matanza</div>
-            <div class="sede-ciudad">San Justo, Buenos Aires</div>
-            <div class="sede-datos">
-              <div class="sede-dato">
-                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <div class="sede-dato-txt">Calle 000, San Justo <small><!-- dirección real --></small></div>
-              </div>
-              <div class="sede-dato">
-                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                <div class="sede-dato-txt">11 XXXX-XXXX <small>Bachillerato para adultos</small></div>
-              </div>
-            </div>
-          </div>
-          <div class="sede-card-footer">
-            <a href="https://wa.me/549XXXXXXXXXX" class="btn-sede-wa" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
-              WhatsApp
-            </a>
-            <a href="tel:+54911XXXXXXXX" class="btn-sede-tel">
-              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- ═══ SUBSEDE 5 ═══ -->
-        <div class="sede-card" data-zone="gba-sur">
+        <div class="sede-card" data-zone="otras-provincias" data-lat="-31.7412158" data-lng="-60.5188266" data-nombre="Sede Paraná">
           <div class="sede-card-top celeste"></div>
           <div class="sede-card-body">
-            <span class="sede-zona-badge">GBA Sur</span>
-            <div class="sede-nombre">Sede Lanús</div>
-            <div class="sede-ciudad">Lanús, Buenos Aires</div>
+            <span class="sede-zona-badge">Entre Ríos</span>
+            <div class="sede-nombre">Sede Paraná</div>
+            <div class="sede-ciudad">Paraná, Entre Ríos</div>
             <div class="sede-datos">
               <div class="sede-dato">
                 <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <div class="sede-dato-txt">Calle 000, Lanús <small><!-- dirección real --></small></div>
+                <div class="sede-dato-txt">Pascual Echagüe 1160</div>
               </div>
               <div class="sede-dato">
                 <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                <div class="sede-dato-txt">11 XXXX-XXXX <small>Bachillerato para adultos</small></div>
+                <div class="sede-dato-txt">(0343) 15-5018691</div>
               </div>
             </div>
           </div>
           <div class="sede-card-footer">
-            <a href="https://wa.me/549XXXXXXXXXX" class="btn-sede-wa" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
-              WhatsApp
+            <a href="mailto:esbaparana@gmail.com" class="btn-sede-tel" aria-label="Email">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </a>
-            <a href="tel:+54911XXXXXXXX" class="btn-sede-tel">
-              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- ═══ SUBSEDE 6 ═══ -->
-        <div class="sede-card" data-zone="gba-sur">
-          <div class="sede-card-top celeste"></div>
-          <div class="sede-card-body">
-            <span class="sede-zona-badge">GBA Sur</span>
-            <div class="sede-nombre">Sede Quilmes</div>
-            <div class="sede-ciudad">Quilmes, Buenos Aires</div>
-            <div class="sede-datos">
-              <div class="sede-dato">
-                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <div class="sede-dato-txt">Av. H. Yrigoyen 000 <small><!-- dirección real --></small></div>
-              </div>
-              <div class="sede-dato">
-                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                <div class="sede-dato-txt">11 XXXX-XXXX <small>Bachillerato para adultos</small></div>
-              </div>
-            </div>
-          </div>
-          <div class="sede-card-footer">
-            <a href="https://wa.me/549XXXXXXXXXX" class="btn-sede-wa" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
-              WhatsApp
-            </a>
-            <a href="tel:+54911XXXXXXXX" class="btn-sede-tel">
-              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=-31.7412158,-60.5188266" target="_blank" rel="noopener noreferrer" class="btn-sede-maps" aria-label="Cómo llegar">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </a>
           </div>
         </div>
 
-        <!-- ═══ SUBSEDE 7 — CABA ═══ -->
-        <div class="sede-card" data-zone="caba">
+        <div class="sede-card" data-zone="otras-provincias" data-lat="-31.6464267" data-lng="-60.7082943" data-nombre="Sede Santa Fe">
           <div class="sede-card-top lila"></div>
           <div class="sede-card-body">
-            <span class="sede-zona-badge">CABA</span>
-            <div class="sede-nombre">Sede Barrio Norte</div>
-            <div class="sede-ciudad">Ciudad Autónoma de Buenos Aires</div>
+            <span class="sede-zona-badge">Santa Fe</span>
+            <div class="sede-nombre">Sede Santa Fe</div>
+            <div class="sede-ciudad">Santa Fe, Santa Fe</div>
             <div class="sede-datos">
               <div class="sede-dato">
                 <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <div class="sede-dato-txt">Av. Santa Fe 000 <small><!-- dirección real --></small></div>
+                <div class="sede-dato-txt">Tucumán 2731</div>
               </div>
               <div class="sede-dato">
                 <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                <div class="sede-dato-txt">11 XXXX-XXXX <small>Bachillerato · Tecnicaturas</small></div>
+                <div class="sede-dato-txt">(0342) 455-8371 / 452-5658</div>
               </div>
             </div>
           </div>
           <div class="sede-card-footer">
-            <a href="https://wa.me/549XXXXXXXXXX" class="btn-sede-wa" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
-              WhatsApp
-            </a>
-            <a href="tel:+54911XXXXXXXX" class="btn-sede-tel">
+            <a href="tel:+543424558371" class="btn-sede-tel" aria-label="Llamar">
               <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=-31.6464267,-60.7082943" target="_blank" rel="noopener noreferrer" class="btn-sede-maps" aria-label="Cómo llegar">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </a>
           </div>
         </div>
 
-        <!-- ═══ SUBSEDE 8 — Interior ═══ -->
-        <div class="sede-card" data-zone="interior">
-          <div class="sede-card-top" style="background:var(--rojo-fluor)"></div>
+        <div class="sede-card" data-zone="otras-provincias" data-lat="-32.9442426" data-lng="-60.6505388" data-nombre="Sede Rosario">
+          <div class="sede-card-top verde"></div>
           <div class="sede-card-body">
-            <span class="sede-zona-badge" style="background:rgba(237,47,89,.08);color:var(--rojo-fluor)">Interior Pcia.</span>
-            <div class="sede-nombre">Sede Mar del Plata</div>
-            <div class="sede-ciudad">Mar del Plata, Buenos Aires</div>
+            <span class="sede-zona-badge">Santa Fe</span>
+            <div class="sede-nombre">Sede Rosario</div>
+            <div class="sede-ciudad">Rosario, Santa Fe</div>
             <div class="sede-datos">
               <div class="sede-dato">
-                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <div class="sede-dato-txt">Calle 000, MdP <small><!-- dirección real --></small></div>
-              </div>
-              <div class="sede-dato">
-                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                <div class="sede-dato-txt">2236 XXX-XXX <small>Bachillerato para adultos</small></div>
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <div class="sede-dato-txt">Dirección y teléfono a confirmar <small>consultar por sede central</small></div>
               </div>
             </div>
           </div>
           <div class="sede-card-footer">
-            <a href="https://wa.me/549XXXXXXXXXX" class="btn-sede-wa" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/5491157400965?text=Hola!%20Quiero%20informaci%C3%B3n%20sobre%20ESBA%20Rosario." class="btn-sede-wa" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.493A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.923 0-3.732-.518-5.287-1.419l-.38-.226-3.762.886.934-3.641-.248-.389A9.93 9.93 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/></svg>
               WhatsApp
             </a>
-            <a href="tel:+54223XXXXXXX" class="btn-sede-tel">
-              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=-32.9442426,-60.6505388" target="_blank" rel="noopener noreferrer" class="btn-sede-maps" aria-label="Cómo llegar">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </a>
           </div>
         </div>
-
-        <!-- ═══ SEDES 9–12: agregar con el mismo patrón ═══ -->
-        <!-- Copiar y pegar un bloque .sede-card por cada subsede real adicional -->
 
       </div><!-- /sedes-grid -->
     </div><!-- /subsedes-section -->
@@ -1035,8 +1168,81 @@ tabs.forEach(tab => {
       if (show) visible++;
     });
     countEl.textContent = `Mostrando ${visible} sede${visible !== 1 ? 's' : ''}`;
+    if (window.sedesMapMarkers) {
+      window.sedesMapMarkers.forEach(m => {
+        const show = zone === 'todas' || m.zone === zone || m.zone === 'central';
+        m.marker.setMap(show ? window.sedesMap : null);
+      });
+    }
   });
 });
+
+// Mapa interactivo (Google Maps)
+function initSedesMap() {
+  const mapEl = document.getElementById('sedes-map');
+  if (!mapEl) return;
+
+  const sedeCentral = document.querySelector('.sede-central[data-lat]');
+  const sedeCards = document.querySelectorAll('.sede-card[data-lat]');
+
+  const map = new google.maps.Map(mapEl, {
+    zoom: 6,
+    center: { lat: -34.6, lng: -58.6 },
+    mapId: 'ESBA_SEDES_MAP'
+  });
+  window.sedesMap = map;
+
+  const bounds = new google.maps.LatLngBounds();
+  const infoWindow = new google.maps.InfoWindow();
+  const markers = [];
+
+  function addMarker(el, zone, isCentral) {
+    const lat = parseFloat(el.dataset.lat);
+    const lng = parseFloat(el.dataset.lng);
+    const nombre = el.dataset.nombre;
+    if (isNaN(lat) || isNaN(lng)) return;
+
+    const position = { lat, lng };
+    const marker = new google.maps.Marker({
+      position,
+      map,
+      title: nombre,
+      icon: isCentral ? {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: 9,
+        fillColor: '#BF0411',
+        fillOpacity: 1,
+        strokeColor: '#fff',
+        strokeWeight: 2
+      } : undefined
+    });
+
+    marker.addListener('click', () => {
+      const dirUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+      infoWindow.setContent(
+        `<div class="map-infobox"><strong>${nombre}</strong><a href="${dirUrl}" target="_blank" rel="noopener noreferrer">Cómo llegar →</a></div>`
+      );
+      infoWindow.open(map, marker);
+    });
+
+    bounds.extend(position);
+    markers.push({ marker, zone: zone || 'central' });
+  }
+
+  if (sedeCentral) addMarker(sedeCentral, 'central', true);
+  sedeCards.forEach(card => addMarker(card, card.dataset.zone, false));
+
+  window.sedesMapMarkers = markers;
+  if (markers.length > 0) map.fitBounds(bounds, 60);
+}
 </script>
+
+<!--
+  Mapa interactivo: para activarlo, generá una API key de Google Maps
+  (console.cloud.google.com → APIs & Services → Credentials → Create API Key,
+  habilitando "Maps JavaScript API") y pegala abajo donde dice TU_API_KEY_AQUI.
+  Restringila por HTTP referrer a esbaflorida.edu.ar/* antes de publicar.
+-->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY_AQUI&callback=initSedesMap"></script>
 </body>
 </html>
