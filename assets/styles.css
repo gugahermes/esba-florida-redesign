@@ -768,7 +768,7 @@ footer{
 
 /* ── FLOATING WHATSAPP ───────────────────────────────── */
 .wa-float{
-  position:fixed;bottom:26px;right:26px;
+  position:fixed;bottom:90px;right:26px;
   width:58px;height:58px;border-radius:50%;
   background:#25D366;
   display:flex;align-items:center;justify-content:center;
