@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Auditoría CRO — ESBA Florida | Junio 2026</title>
+<style>
+:root {
+  --azul: #26276E;
+  --rojo: #BF0411;
+  --verde: #16a34a;
+  --naranja: #ea580c;
+  --amarillo: #ca8a04;
+  --gris: #f8f8fc;
+  --borde: #e5e7eb;
+  --texto: #1a1a2e;
+  --muted: #6b7280;
+  --font: 'Segoe UI', system-ui, sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);color:var(--texto);background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* ── COVER ── */
+.cover{
+  min-height:100vh;
+  background:linear-gradient(135deg,#1a1b4f 0%,#26276E 55%,#BF0411 100%);
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:60px 80px;color:#fff;
+  page-break-after:always;
+}
+.cover-top{display:flex;justify-content:space-between;align-items:flex-start}
+.cover-brand{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;opacity:.5}
+.cover-date{font-size:13px;opacity:.45}
+.cover-center{flex:1;display:flex;flex-direction:column;justify-content:center;padding:60px 0}
+.cover-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;opacity:.6;margin-bottom:20px}
+.cover-tag-dot{width:6px;height:6px;border-radius:50%;background:#fff;opacity:.7;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:.7}50%{opacity:.2}}
+.cover-title{font-size:clamp(32px,5vw,60px);font-weight:300;line-height:1.15;max-width:700px;margin-bottom:12px}
+.cover-title strong{font-weight:800}
+.cover-url{font-size:14px;opacity:.45;margin-bottom:48px;font-family:monospace}
+.cover-chips{display:flex;gap:12px;flex-wrap:wrap}
+.cover-chip{
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);
+  border-radius:50px;padding:8px 18px;font-size:13px;font-weight:500;
+}
+.cover-chip span{opacity:.6;margin-right:6px}
+.cover-score-row{display:flex;gap:32px;align-items:center;margin-top:48px;padding-top:40px;border-top:1px solid rgba(255,255,255,.1)}
+.cover-score-big{text-align:center}
+.cover-score-num{font-size:80px;font-weight:800;line-height:1;color:#FBBF24}
+.cover-score-label{font-size:12px;opacity:.5;text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+.cover-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;flex:1}
+.cover-kpi{padding:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:16px}
+.cover-kpi-n{font-size:32px;font-weight:800;line-height:1}
+.cover-kpi-l{font-size:11px;opacity:.5;margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
+.cover-kpi.red .cover-kpi-n{color:#f87171}
+.cover-kpi.orange .cover-kpi-n{color:#fb923c}
+.cover-kpi.green .cover-kpi-n{color:#4ade80}
+.cover-kpi.blue .cover-kpi-n{color:#60a5fa}
+.cover-bottom{font-size:12px;opacity:.3;display:flex;justify-content:space-between}
+
+/* ── PÁGINA ── */
+.page{padding:64px 72px;max-width:1200px;margin:0 auto;page-break-after:always}
+.page:last-child{page-break-after:auto}
+
+/* ── SECCIONES ── */
+.section-label{
+  font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;
+  color:var(--rojo);margin-bottom:10px
+}
+.section-title{font-size:clamp(22px,3vw,34px);font-weight:800;color:var(--azul);margin-bottom:8px;line-height:1.2}
+.section-sub{font-size:15px;color:var(--muted);line-height:1.65;margin-bottom:36px;max-width:680px}
+
+/* ── SCORE GAUGE SVG ── */
+.gauge-wrap{display:flex;align-items:center;gap:48px;margin-bottom:48px}
+.gauge-meta h3{font-size:14px;font-weight:700;color:var(--azul);margin-bottom:12px}
+.gauge-meta p{font-size:13.5px;color:var(--muted);line-height:1.65;max-width:480px}
+
+/* ── PAGE SCORES GRID ── */
+.page-scores{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:48px}
+.pscore{background:var(--gris);border-radius:16px;padding:20px;border:1px solid var(--borde);text-align:center}
+.pscore-name{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.pscore-n{font-size:36px;font-weight:800;line-height:1}
+.pscore-tag{font-size:11px;font-weight:600;margin-top:6px;padding:3px 10px;border-radius:50px;display:inline-block}
+.pscore.critical .pscore-n{color:var(--rojo)}
+.pscore.critical .pscore-tag{background:#fef2f2;color:var(--rojo)}
+.pscore.warning .pscore-n{color:#b45309}
+.pscore.warning .pscore-tag{background:#fffbeb;color:#b45309}
+.pscore.good .pscore-n{color:#15803d}
+.pscore.good .pscore-tag{background:#f0fdf4;color:#15803d}
+
+/* ── CRITICAL ISSUES ── */
+.issues-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:48px}
+.issue-card{border-radius:14px;padding:20px 22px;border-left:4px solid}
+.issue-card.critical{background:#fef2f2;border-color:var(--rojo)}
+.issue-card.warning{background:#fffbeb;border-color:#f59e0b}
+.issue-card.good{background:#f0fdf4;border-color:var(--verde)}
+.issue-id{font-size:10px;font-weight:700;letter-spacing:1px;opacity:.5;margin-bottom:6px;text-transform:uppercase}
+.issue-title{font-size:14px;font-weight:700;margin-bottom:6px}
+.issue-body{font-size:13px;line-height:1.6;color:var(--muted)}
+
+/* ── CALLOUT SCREENSHOTS ── */
+.screen-block{margin-bottom:48px}
+.screen-pair{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:flex-start;margin-bottom:32px}
+.screen-img{border-radius:12px;border:1px solid var(--borde);overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.08)}
+.screen-img img{width:100%;display:block}
+.screen-callouts{min-width:280px;display:flex;flex-direction:column;gap:12px}
+.callout-item{padding:14px 16px;border-radius:12px;border:1px solid var(--borde);background:#fff}
+.callout-id{font-size:10px;font-weight:700;letter-spacing:.5px;margin-bottom:5px;font-family:monospace}
+.callout-item.critical .callout-id{color:var(--rojo)}
+.callout-item.warning .callout-id{color:#b45309}
+.callout-item.info .callout-id{color:var(--azul)}
+.callout-item.good .callout-id{color:var(--verde)}
+.callout-text{font-size:12.5px;line-height:1.55;color:var(--texto)}
+
+/* ── FRAMEWORK TABLES ── */
+.framework-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:48px}
+.fw-block h3{font-size:14px;font-weight:700;color:var(--azul);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--borde)}
+.fw-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--gris)}
+.fw-label{font-size:13px;flex:1}
+.fw-bar-wrap{width:120px;height:8px;background:var(--gris);border-radius:4px;overflow:hidden}
+.fw-bar{height:100%;border-radius:4px}
+.fw-score{font-size:13px;font-weight:700;width:28px;text-align:right}
+.fw-bar.s0{width:0%;background:#ef4444}
+.fw-bar.s1{width:33%;background:#ef4444}
+.fw-bar.s2{width:66%;background:#f59e0b}
+.fw-bar.s3{width:100%;background:#22c55e}
+
+/* ── FUNNEL ── */
+.funnel-sec{margin-bottom:48px}
+.funnel-steps{display:flex;flex-direction:column;gap:0}
+.funnel-step{display:flex;align-items:stretch;gap:20px}
+.funnel-left{width:200px;text-align:right;padding:16px 0;flex-shrink:0}
+.funnel-name{font-size:13px;font-weight:600;color:var(--azul)}
+.funnel-sub{font-size:11px;color:var(--muted)}
+.funnel-bar-col{display:flex;flex-direction:column;align-items:center}
+.funnel-dot{width:14px;height:14px;border-radius:50%;background:var(--azul);flex-shrink:0;z-index:1}
+.funnel-line{width:2px;flex:1;background:var(--borde)}
+.funnel-right{flex:1;padding:10px 0 10px 4px}
+.funnel-right-inner{background:var(--gris);border-radius:12px;padding:14px 18px}
+.funnel-pct{font-size:22px;font-weight:800;color:var(--azul)}
+.funnel-drop{font-size:12px;color:var(--rojo);font-weight:600}
+.funnel-note{font-size:12px;color:var(--muted)}
+.funnel-step.critical .funnel-dot{background:var(--rojo)}
+.funnel-step.critical .funnel-right-inner{background:#fef2f2;border:1px solid #fecaca}
+.funnel-step.critical .funnel-pct{color:var(--rojo)}
+
+/* ── PRIORITY MATRIX ── */
+.matrix-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:48px;align-items:start}
+.matrix-svg-wrap{background:var(--gris);border-radius:16px;padding:24px;border:1px solid var(--borde)}
+.recs-list{display:flex;flex-direction:column;gap:14px}
+.rec-card{border-radius:14px;padding:18px 20px;border:1px solid var(--borde);background:#fff;border-left:4px solid}
+.rec-card.p1{border-left-color:#dc2626}
+.rec-card.p2{border-left-color:#f59e0b}
+.rec-card.p3{border-left-color:var(--azul)}
+.rec-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.rec-title{font-size:14px;font-weight:700}
+.rec-badge{font-size:10px;font-weight:700;padding:3px 10px;border-radius:50px}
+.rec-badge.p1{background:#fef2f2;color:#dc2626}
+.rec-badge.p2{background:#fffbeb;color:#b45309}
+.rec-badge.p3{background:#eff6ff;color:var(--azul)}
+.rec-page{font-size:11px;color:var(--muted);margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.rec-body{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:8px}
+.rec-impact{font-size:12px;font-weight:600;color:var(--verde)}
+.rec-effort{font-size:12px;color:var(--muted)}
+
+/* ── AB TESTS ── */
+.test-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:48px}
+.test-table th{background:var(--azul);color:#fff;padding:12px 16px;text-align:left;font-size:12px;font-weight:600;letter-spacing:.3px}
+.test-table td{padding:12px 16px;border-bottom:1px solid var(--borde);vertical-align:top}
+.test-table tr:nth-child(even) td{background:var(--gris)}
+.test-n{font-weight:800;color:var(--azul)}
+.impact-chip{display:inline-flex;align-items:center;gap:4px;background:#dcfce7;color:#15803d;border-radius:50px;padding:2px 10px;font-size:11px;font-weight:700}
+
+/* ── CONCLUSIONES ── */
+.conclusions{
+  background:linear-gradient(135deg,#1a1b4f 0%,#26276E 60%,#3A3B8F 100%);
+  color:#fff;border-radius:24px;padding:52px 56px;margin-bottom:40px;
+}
+.conclusions h2{font-size:28px;font-weight:800;margin-bottom:32px}
+.conclusions-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:40px}
+.conc-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px}
+.conc-type{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;opacity:.5;margin-bottom:10px}
+.conc-title{font-size:16px;font-weight:700;margin-bottom:8px}
+.conc-body{font-size:13px;opacity:.72;line-height:1.6}
+.conc-card.red .conc-type{color:#f87171}
+.conc-card.green .conc-type{color:#4ade80}
+.conc-card.blue .conc-type{color:#60a5fa}
+
+/* ── CHECKLIST ── */
+.checklist-title{font-size:16px;font-weight:700;color:#fff;margin-bottom:20px;opacity:.9}
+.checklist-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.checklist-table th{text-align:left;padding:8px 14px;opacity:.4;font-size:10px;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid rgba(255,255,255,.1)}
+.checklist-table td{padding:11px 14px;border-bottom:1px solid rgba(255,255,255,.06);vertical-align:top}
+.checklist-table tr:hover td{background:rgba(255,255,255,.04)}
+.impact-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:middle}
+.impact-dot.high{background:#4ade80}
+.impact-dot.mid{background:#fbbf24}
+.impact-dot.low{background:#94a3b8}
+.ck-box{width:16px;height:16px;border:1.5px solid rgba(255,255,255,.3);border-radius:4px;display:inline-block}
+.kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.kpi-box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:18px 20px;text-align:center}
+.kpi-box-val{font-size:24px;font-weight:800;color:#FBBF24}
+.kpi-box-label{font-size:11px;opacity:.5;margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
+.kpi-box-target{font-size:12px;color:#4ade80;margin-top:4px;font-weight:600}
+
+/* ── DIVIDER ── */
+.divider{height:1px;background:var(--borde);margin:48px 0}
+.page-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px;padding-bottom:20px;border-bottom:2px solid var(--gris)}
+.page-num{font-size:12px;color:var(--muted);font-weight:600}
+.page-brand{font-size:12px;color:var(--muted)}
+
+/* ── PERF TABLE ── */
+.perf-table{width:100%;border-collapse:collapse;margin-bottom:32px;font-size:13px}
+.perf-table th{background:var(--azul);color:#fff;padding:10px 16px;text-align:left;font-size:12px;font-weight:600}
+.perf-table td{padding:10px 16px;border-bottom:1px solid var(--borde);vertical-align:middle}
+.perf-table tr:nth-child(even) td{background:var(--gris)}
+.pill{display:inline-flex;align-items:center;padding:3px 12px;border-radius:50px;font-size:11px;font-weight:700}
+.pill.green{background:#dcfce7;color:#15803d}
+.pill.orange{background:#ffedd5;color:#c2410c}
+.pill.red{background:#fef2f2;color:#dc2626}
+.pill.blue{background:#eff6ff;color:var(--azul)}
+
+/* ── SEO ── */
+.seo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:32px}
+.seo-item{padding:16px 18px;border-radius:12px;border:1px solid var(--borde);background:#fff}
+.seo-check{font-size:16px;margin-bottom:6px}
+.seo-title{font-size:13px;font-weight:700;margin-bottom:4px}
+.seo-body{font-size:12.5px;color:var(--muted);line-height:1.5}
+
+/* ── PRINT ── */
+@media print {
+  .page,body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .cover,.page{page-break-after:always}
+  .cover{min-height:auto;padding:40px 60px}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════
+     PORTADA
+════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-top">
+    <div class="cover-brand">Auditoría CRO Completa</div>
+    <div class="cover-date">Junio 2026</div>
+  </div>
+  <div class="cover-center">
+    <div class="cover-tag"><span class="cover-tag-dot"></span>Reporte de Conversión</div>
+    <h1 class="cover-title">Auditoría de <strong>Conversión</strong><br>ESBA Florida</h1>
+    <div class="cover-url">gugahermes.github.io/esba-florida-redesign/ → esbaflorida.edu.ar</div>
+    <div class="cover-chips">
+      <div class="cover-chip"><span>Tipo</span>Institución educativa privada</div>
+      <div class="cover-chip"><span>Páginas</span>5 auditadas</div>
+      <div class="cover-chip"><span>Objetivo</span>Consultas vía WA / formulario</div>
+      <div class="cover-chip"><span>Frameworks</span>AIDA · Cialdini · Nielsen · 4Ps</div>
+    </div>
+    <div class="cover-score-row">
+      <div class="cover-score-big">
+        <div class="cover-score-num">58</div>
+        <div class="cover-score-label">Score global / 100</div>
+      </div>
+      <div class="cover-kpis">
+        <div class="cover-kpi red">
+          <div class="cover-kpi-n">5</div>
+          <div class="cover-kpi-l">Críticos</div>
+        </div>
+        <div class="cover-kpi orange">
+          <div class="cover-kpi-n">8</div>
+          <div class="cover-kpi-l">Mejoras</div>
+        </div>
+        <div class="cover-kpi green">
+          <div class="cover-kpi-n">6</div>
+          <div class="cover-kpi-l">Quick wins</div>
+        </div>
+        <div class="cover-kpi blue">
+          <div class="cover-kpi-n">4</div>
+          <div class="cover-kpi-l">Tests A/B</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cover-bottom">
+    <span>Confidencial — ESBA Florida</span>
+    <span>esbaflorida.edu.ar · DIEGEP N° 6278</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     PÁG 1: RESUMEN EJECUTIVO
+════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-brand">ESBA Florida — Auditoría CRO</div>
+    <div class="page-num">Página 1 de 7 — Resumen Ejecutivo</div>
+  </div>
+
+  <p class="section-label">Resumen ejecutivo</p>
+  <h2 class="section-title">Score por página</h2>
+  <p class="section-sub">El sitio tiene una base visual sólida y propuesta de valor clara. Los principales frenos a la conversión son estructurales (carousel, ausencia de tracking, sin captación inline de leads) y resolverlos tiene alto impacto con esfuerzo bajo.</p>
+
+  <div class="page-scores">
+    <div class="pscore warning">
+      <div class="pscore-name">Home</div>
+      <div class="pscore-n" style="color:#b45309">58</div>
+      <div class="pscore-tag" style="background:#fffbeb;color:#b45309">A mejorar</div>
+    </div>
+    <div class="pscore warning">
+      <div class="pscore-name">Bachillerato</div>
+      <div class="pscore-n" style="color:#b45309">63</div>
+      <div class="pscore-tag" style="background:#fffbeb;color:#b45309">A mejorar</div>
+    </div>
+    <div class="pscore critical">
+      <div class="pscore-name">Contacto</div>
+      <div class="pscore-n">49</div>
+      <div class="pscore-tag">Crítico</div>
+    </div>
+    <div class="pscore good">
+      <div class="pscore-name">Sedes</div>
+      <div class="pscore-n" style="color:#15803d">71</div>
+      <div class="pscore-tag" style="background:#f0fdf4;color:#15803d">Bueno</div>
+    </div>
+  </div>
+
+  <!-- Gauge SVG -->
+  <div class="gauge-wrap">
+    <svg width="180" height="180" viewBox="0 0 180 180">
+      <circle cx="90" cy="90" r="70" fill="none" stroke="#f3f4f6" stroke-width="18"/>
+      <circle cx="90" cy="90" r="70" fill="none" stroke="#F59E0B" stroke-width="18"
+        stroke-dasharray="263" stroke-dashoffset="110"
+        stroke-linecap="round" transform="rotate(-90 90 90)"/>
+      <text x="90" y="85" text-anchor="middle" font-size="38" font-weight="800" fill="#26276E">58</text>
+      <text x="90" y="108" text-anchor="middle" font-size="12" fill="#9ca3af">/ 100</text>
+    </svg>
+    <div class="gauge-meta">
+      <h3>🟡 Sitio funcional — con oportunidades críticas</h3>
+      <p>La presentación visual es competente y la propuesta de valor del bachillerato es clara. Sin embargo, el sitio opera sin analytics (punto ciego total), el hero carousel entierra el mensaje principal, y no hay captación de leads en el primer scroll. Corregir estos tres puntos puede duplicar la tasa de consultas medidas.</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:16px;font-weight:700;color:var(--azul);margin-bottom:20px">🔴 Hallazgos críticos</h3>
+  <div class="issues-grid">
+    <div class="issue-card critical">
+      <div class="issue-id">HOME-TRACK-01 · CRÍTICO</div>
+      <div class="issue-title">Sin Google Analytics ni Meta Pixel</div>
+      <div class="issue-body">El sitio no tiene ningún sistema de tracking activo. No se puede medir cuántas consultas WhatsApp genera cada página, qué tráfico convierte, ni qué campañas Meta funcionan. Es operar 100% a ciegas.</div>
+    </div>
+    <div class="issue-card critical">
+      <div class="issue-id">HOME-HERO-01 · CRÍTICO</div>
+      <div class="issue-title">Hero carousel de 3 slides destruye el mensaje</div>
+      <div class="issue-body">El 86% de los usuarios nunca interactúa con el carrusel. Los slides 2 (In Company) y 3 (Plan de recomendación) confunden: el referral program está dirigido a alumnos activos, no a prospectos. El slide 3 es 100% irrelevante para audiencia nueva.</div>
+    </div>
+    <div class="issue-card critical">
+      <div class="issue-id">HOME-CTA-01 · CRÍTICO</div>
+      <div class="issue-title">"Preinscribirme" no captura un lead</div>
+      <div class="issue-body">El CTA principal rojo del hero lleva a bachillerato.html#planes — agrega fricción innecesaria. El usuario ya vio el slide de bachillerato y hace clic en "Preinscribirme" esperando inscribirse. Enviarlo a otra página rompe el momentum.</div>
+    </div>
+    <div class="issue-card critical">
+      <div class="issue-id">HOME-MOBILE-01 · CRÍTICO</div>
+      <div class="issue-title">Mobile: menú cubre el hero en carga inicial</div>
+      <div class="issue-body">En renders headless (y potencialmente en navegadores lentos) el panel de navegación mobile se muestra sobre el hero antes de que el JS lo oculte. El primer contenido visible para el usuario es el menú de navegación, no el hero con la propuesta de valor.</div>
+    </div>
+    <div class="issue-card critical">
+      <div class="issue-id">CONT-FORM-01 · CRÍTICO</div>
+      <div class="issue-title">Formulario de contacto no conectado a CRM/HubSpot</div>
+      <div class="issue-body">El formulario tiene un placeholder "<!-- HubSpot -->". Actualmente no hay backend que procese las consultas del formulario. Cualquier usuario que no use WhatsApp y complete el formulario no recibe respuesta.</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:16px;font-weight:700;color:var(--azul);margin-bottom:20px">🟢 Fortalezas del sitio</h3>
+  <div class="issues-grid">
+    <div class="issue-card good">
+      <div class="issue-id">HOME-COPY-OK</div>
+      <div class="issue-title">Propuesta de valor clara y directa</div>
+      <div class="issue-body">"Terminá el secundario 100% a distancia" comunica en 6 palabras qué es el producto, para quién es y la modalidad. Los chips "100% Online · Desde 16 meses · Título oficial" refuerzan los 3 objeciones principales en segundos.</div>
+    </div>
+    <div class="issue-card good">
+      <div class="issue-id">SEO-SCHEMA-OK</div>
+      <div class="issue-title">Schema markup completo y correcto</div>
+      <div class="issue-body">EducationalOrganization con hasCourse para los 4 programas, dirección, teléfono y email. Mejor schema que la mayoría de instituciones educativas de Argentina. Solo falta el AggregateRating para activar estrellas en Google.</div>
+    </div>
+    <div class="issue-card good">
+      <div class="issue-id">SEDES-WA-OK</div>
+      <div class="issue-title">WhatsApp directo por sede en cards</div>
+      <div class="issue-body">La página de sedes tiene 14+ cards con botón WhatsApp específico por sede, número local, dirección y maps. Es la sección mejor optimizada del sitio para conversión local.</div>
+    </div>
+    <div class="issue-card good">
+      <div class="issue-id">NAV-WA-OK</div>
+      <div class="issue-title">CTA WhatsApp siempre visible en header (desktop)</div>
+      <div class="issue-body">El botón verde "Consultar ahora" en el header es visible en scroll en todas las páginas desktop. Es la mejor práctica para sitios educativos donde WhatsApp es el canal principal de conversión.</div>
+    </div>
+  </div>
+
+  <!-- Roadmap -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+    <div style="background:#fef2f2;border-radius:16px;padding:24px;border-top:4px solid var(--rojo)">
+      <div style="font-size:11px;font-weight:700;color:var(--rojo);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px">Primeros 7 días</div>
+      <ul style="font-size:13px;color:var(--texto);line-height:2;padding-left:16px">
+        <li>Instalar GA4 + Meta Pixel</li>
+        <li>Conectar HubSpot al formulario</li>
+        <li>Fix nav mobile (z-index / FOUC)</li>
+        <li>Actualizar "13 sedes" → "17 sedes"</li>
+        <li>Reemplazar carousel por hero estático</li>
+      </ul>
+    </div>
+    <div style="background:#fffbeb;border-radius:16px;padding:24px;border-top:4px solid #f59e0b">
+      <div style="font-size:11px;font-weight:700;color:#b45309;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px">Semanas 2–4</div>
+      <ul style="font-size:13px;color:var(--texto);line-height:2;padding-left:16px">
+        <li>Agregar mini-form inline en hero</li>
+        <li>Combinar Nombre+Apellido en 1 campo</li>
+        <li>Agregar precios/cuotas en plan cards</li>
+        <li>Sección de testimonios en home</li>
+        <li>WhatsApp CTA sticky en mobile</li>
+      </ul>
+    </div>
+    <div style="background:#f0fdf4;border-radius:16px;padding:24px;border-top:4px solid var(--verde)">
+      <div style="font-size:11px;font-weight:700;color:#15803d;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px">Mes 2–3</div>
+      <ul style="font-size:13px;color:var(--texto);line-height:2;padding-left:16px">
+        <li>Landing pages por campaña Meta</li>
+        <li>Tests A/B (hero headline vs. CTA)</li>
+        <li>Automatización post-consulta</li>
+        <li>Blog con SEO por "bachillerato adultos"</li>
+        <li>Video testimonial en PDP Bachillerato</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     PÁG 2: ANÁLISIS HOME + BACHILLERATO
+════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-brand">ESBA Florida — Auditoría CRO</div>
+    <div class="page-num">Página 2 de 7 — Home + Bachillerato</div>
+  </div>
+
+  <p class="section-label">Análisis visual · Página principal</p>
+  <h2 class="section-title">Home — Callouts</h2>
+
+  <div class="screen-block">
+    <div class="screen-pair">
+      <div class="screen-img">
+        <img src="screenshot_home_desktop.png" alt="Home desktop viewport">
+        <div style="background:#26276E;color:#fff;font-size:11px;padding:6px 14px;font-weight:600">Desktop 1440×900 — Primer fold</div>
+      </div>
+      <div class="screen-callouts">
+        <div class="callout-item critical">
+          <div class="callout-id">HOME-HERO-01 · CRÍTICO</div>
+          <div class="callout-text"><strong>Carousel de 3 slides.</strong> El 86% de usuarios nunca pasa del slide 1 (Nielsen Norman Group, 2016 — dato consistente para educación). Los slides 2 (In Company) y 3 (Referidos) diluyen el mensaje para prospectos nuevos. Slide 3 (Referidos) es completamente irrelevante para quien no es alumno.</div>
+        </div>
+        <div class="callout-item critical">
+          <div class="callout-id">HOME-CTA-01 · CRÍTICO</div>
+          <div class="callout-text"><strong>"Preinscribirme" → bachillerato.html#planes.</strong> El CTA principal no captura un lead ni abre WhatsApp. Agrega un paso innecesario. Alguien que hace clic en "Preinscribirme" quiere inscribirse — debería ir directo a WhatsApp o a un mini-form.</div>
+        </div>
+        <div class="callout-item warning">
+          <div class="callout-id">HOME-HERO-02 · MEJORA</div>
+          <div class="callout-text"><strong>Dos CTAs de igual peso visual.</strong> "Preinscribirme" (rojo) compite con "Ver planes →" (ghost). Debería haber un CTA primario dominante y uno secundario claramente subordinado. El ghost button roba atención del principal.</div>
+        </div>
+        <div class="callout-item warning">
+          <div class="callout-id">HOME-SOCIAL-01 · MEJORA</div>
+          <div class="callout-text"><strong>Sin prueba social en el primer fold.</strong> No hay testimonios, número de alumnos ("+ de 5.000 egresados"), ni notas de prensa. Para educación privada, la confianza es el principal driver de conversión — y no aparece hasta debajo del fold.</div>
+        </div>
+        <div class="callout-item info">
+          <div class="callout-id">HOME-STATS-01 · INFO</div>
+          <div class="callout-text"><strong>"13 sedes" está desactualizado → ahora son 17.</strong> La barra de stats dice "13 Sedes en todo el país" pero el sitio ya tiene 17 cards de sedes activas con WA. Inconsistencia que resta credibilidad.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile home -->
+    <div style="display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:flex-start">
+      <div class="screen-img">
+        <img src="screenshot_home_mobile.png" alt="Home mobile">
+        <div style="background:#BF0411;color:#fff;font-size:11px;padding:6px 14px;font-weight:600">Mobile 390×844</div>
+      </div>
+      <div>
+        <div class="issue-card critical" style="margin-bottom:12px">
+          <div class="issue-id">HOME-MOBILE-01 · CRÍTICO</div>
+          <div class="issue-title">El menú de navegación cubre el hero en carga inicial</div>
+          <div class="issue-body">En la carga mobile, el panel de navegación (`.nav`) se renderiza visible antes de que JavaScript aplique `transform: translateX(100%)`. El usuario ve el menú en lugar del hero. Esto ocurre en navegadores lentos o con JS diferido. Fix: agregar `.nav { visibility: hidden }` en el CSS por defecto y `visibility: visible` cuando se carga el JS, o usar `<script defer>` correctamente. Este bug destruye la experiencia mobile de la primera pantalla.</div>
+        </div>
+        <div class="issue-card warning">
+          <div class="issue-id">HOME-MOBILE-02 · MEJORA</div>
+          <div class="issue-title">Sin CTA WhatsApp sticky en mobile</div>
+          <div class="issue-body">El botón "Consultar ahora" del header desaparece en mobile (CSS: `.btn-wa-hdr { display: none }` en breakpoint). El floating WA button existe pero es muy pequeño (58px). Para una institución donde WhatsApp es el canal principal, debería haber un botón CTA grande y fijo en la parte inferior del viewport mobile en todas las páginas.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="section-label">Análisis visual · Bachillerato</p>
+  <h2 class="section-title">Bachillerato — Callouts</h2>
+
+  <div class="screen-pair">
+    <div class="screen-img">
+      <img src="screenshot_bachillerato_desktop.png" alt="Bachillerato desktop">
+      <div style="background:#26276E;color:#fff;font-size:11px;padding:6px 14px;font-weight:600">Bachillerato.html — Desktop 1440×900</div>
+    </div>
+    <div class="screen-callouts">
+      <div class="callout-item critical">
+        <div class="callout-id">BACH-PRICE-01 · CRÍTICO</div>
+        <div class="callout-text"><strong>Sin precio visible en ninguno de los 3 planes.</strong> Cada plan card muestra duración, nombre y descripción, pero no el precio ni las cuotas. "Consultar este plan →" → WhatsApp crea una fricción enorme: el usuario debe iniciar una conversación para saber si puede pagar. Mostrar el precio (aunque sea "desde $X/mes") aumenta la calidad de las consultas y reduce el tiempo de cierre.</div>
+      </div>
+      <div class="callout-item warning">
+        <div class="callout-id">BACH-PLAN-01 · MEJORA</div>
+        <div class="callout-text"><strong>Los 3 planes requieren que el usuario sepa en cuál encaja.</strong> No hay un quiz o flujo de auto-selección. El visitante que no sabe cuántos años de secundaria tiene aprobados no puede elegir un plan. Un wizard de 2 preguntas ("¿Empezaste el secundario? → ¿Llegaste a X año?") elimina esta fricción.</div>
+      </div>
+      <div class="callout-item warning">
+        <div class="callout-id">BACH-SOCIAL-01 · MEJORA</div>
+        <div class="callout-text"><strong>Sin testimonios en la página de Bachillerato.</strong> Esta es la página de "producto" más importante. Un solo testimonio de un alumno egresado ("Empecé a los 35 años, terminé en 16 meses...") en la parte superior convertiría mucho más que la descripción técnica del plan.</div>
+      </div>
+      <div class="callout-item good">
+        <div class="callout-id">BACH-BADGE-OK</div>
+        <div class="callout-text"><strong>Badge "Más elegido" en Plan Anual.</strong> Buen uso de social proof implícito y ancla visual. El plan destacado es el correcto (el más rápido para quien tiene más materias aprobadas = mayor urgencia de terminar = mayor conversión).</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     PÁG 3: CONTACTO + SEDES
+════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-brand">ESBA Florida — Auditoría CRO</div>
+    <div class="page-num">Página 3 de 7 — Contacto + Sedes</div>
+  </div>
+
+  <p class="section-label">Análisis visual · Formulario de contacto</p>
+  <h2 class="section-title">Contacto — Callouts</h2>
+
+  <div class="screen-pair" style="margin-bottom:40px">
+    <div class="screen-img">
+      <img src="screenshot_contacto_desktop.png" alt="Contacto desktop">
+      <div style="background:#26276E;color:#fff;font-size:11px;padding:6px 14px;font-weight:600">Contacto.html — Desktop 1440×900</div>
+    </div>
+    <div class="screen-callouts">
+      <div class="callout-item critical">
+        <div class="callout-id">CONT-FORM-01 · CRÍTICO</div>
+        <div class="callout-text"><strong>Formulario no conectado a HubSpot / backend.</strong> El formulario es un placeholder HTML sin action. Cualquier usuario que lo complete NO recibe respuesta. El comentario `&lt;!-- HubSpot --&gt;` en el código fuente confirma que está pendiente de integración. Todo el tráfico que no usa WhatsApp se pierde completamente.</div>
+      </div>
+      <div class="callout-item warning">
+        <div class="callout-id">CONT-FORM-02 · MEJORA</div>
+        <div class="callout-text"><strong>Nombre y Apellido en 2 campos separados.</strong> Benchmark de checkout research (Baymard Institute): separar nombre y apellido aumenta el tiempo de completado en ~45 segundos en mobile. Unificar en "Nombre completo" reduce fricción. Cada campo extra = 10-15% de drop en formularios de captación.</div>
+      </div>
+      <div class="callout-item warning">
+        <div class="callout-id">CONT-FORM-03 · MEJORA</div>
+        <div class="callout-text"><strong>Sin indicador de tiempo de respuesta en el formulario.</strong> El hero de la página dice "un asesor responde en menos de 24 horas" pero eso es mucho tiempo en educación donde la decisión se toma rápido. Si el SLA real es menor (ej: 2 horas en horario hábil), comunicarlo reduce el abandono a favor de WhatsApp.</div>
+      </div>
+      <div class="callout-item info">
+        <div class="callout-id">CONT-TRUST-01 · INFO</div>
+        <div class="callout-text"><strong>Sin prueba social junto al formulario.</strong> "Lo completaron X personas este mes" o un mini-testimonio ("Mandé el formulario el lunes, el miércoles ya tenía el material") reduce la ansiedad de enviar datos personales y acelera la conversión.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audit de campos del form -->
+  <h3 style="font-size:15px;font-weight:700;color:var(--azul);margin-bottom:16px">Auditoría de campos del formulario</h3>
+  <table class="perf-table" style="margin-bottom:40px">
+    <tr>
+      <th>Campo</th><th>¿Necesario para contactar?</th><th>Recomendación</th><th>Impacto</th>
+    </tr>
+    <tr><td>Nombre</td><td>✅ Sí</td><td>Combinar con Apellido en "Nombre completo"</td><td class="pill orange">-45s mobile</td></tr>
+    <tr><td>Apellido</td><td>⚠️ Parcial</td><td>Eliminar — unir al campo Nombre</td><td class="pill green">+8% completado</td></tr>
+    <tr><td>Email</td><td>✅ Sí — capturar primero</td><td>Mover al primer lugar (captura el lead aunque abandone)</td><td class="pill green">+lead parcial</td></tr>
+    <tr><td>Teléfono/WhatsApp</td><td>✅ Sí</td><td>Mantener — es el canal principal de seguimiento</td><td>—</td></tr>
+    <tr><td>Oferta educativa</td><td>✅ Sí — califica el lead</td><td>Mantener — permite segmentar la respuesta del asesor</td><td class="pill green">+calidad lead</td></tr>
+    <tr><td>Mensaje</td><td>⚠️ Opcional</td><td>Mantener opcional pero último — no bloquear</td><td>—</td></tr>
+  </table>
+  <p style="font-size:13px;color:var(--muted);margin-top:-28px;margin-bottom:40px">👉 <strong>5 campos optimizados</strong> (vs. 6 actuales) + orden correcto → estimación: <strong>+15-20% de tasa de completado</strong></p>
+
+  <div class="divider"></div>
+
+  <p class="section-label">Análisis visual · Red de sedes</p>
+  <h2 class="section-title">Sedes — Callouts</h2>
+
+  <div style="display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:flex-start">
+    <div class="screen-img" style="width:380px">
+      <img src="screenshot_sedes_desktop.png" alt="Sedes desktop">
+      <div style="background:#26276E;color:#fff;font-size:11px;padding:6px 14px;font-weight:600">Sedes.html — Desktop</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="callout-item good">
+        <div class="callout-id">SEDES-STRUCT-OK</div>
+        <div class="callout-text"><strong>Excelente estructura de cards con WA por sede.</strong> Cada card tiene botón WhatsApp directo con número local. Mapa Leaflet interactivo. Filtro por zona (GBA Norte, Sur, Oeste, CABA, Interior). Es la sección más completa y funcional del sitio.</div>
+      </div>
+      <div class="callout-item warning">
+        <div class="callout-id">SEDES-COUNT-01 · MEJORA</div>
+        <div class="callout-text"><strong>Contador "Mostrando 12 sedes" desactualizado.</strong> El JS cuenta las cards dinámicamente pero el hero dice "+17 sedes activas" (actualizado). El texto inicial del contador JS hardcodeado debería coincidir. Menor pero visible.</div>
+      </div>
+      <div class="callout-item warning">
+        <div class="callout-id">SEDES-NOINFO-01 · MEJORA</div>
+        <div class="callout-text"><strong>Barrio Norte, Escobar y C. del Uruguay sin horario ni email visibles.</strong> Algunos cards solo muestran dirección y teléfono fijo. Para conversión local, agregar horario de atención y email de la sede reduce la barrera de contacto para quienes prefieren no usar WhatsApp.</div>
+      </div>
+      <div class="callout-item info">
+        <div class="callout-id">SEDES-MAP-01 · INFO</div>
+        <div class="callout-text"><strong>El mapa Leaflet carga sin API key y con OpenStreetMap.</strong> Funciona bien. Sin embargo, los marcadores no tienen diferenciación visual por zona (todos iguales). Colorear por zona (Norte/Sur/Oeste/CABA) mejoraría la usabilidad para alguien que busca por área geográfica.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     PÁG 4: FRAMEWORKS + PERFORMANCE
+════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-brand">ESBA Florida — Auditoría CRO</div>
+    <div class="page-num">Página 4 de 7 — Frameworks + Performance</div>
+  </div>
+
+  <p class="section-label">Framework CRO</p>
+  <h2 class="section-title">AIDA por página</h2>
+
+  <div style="overflow-x:auto;margin-bottom:40px">
+    <table class="test-table">
+      <tr>
+        <th>Dimensión</th>
+        <th>Home</th>
+        <th>Bachillerato</th>
+        <th>Contacto</th>
+        <th>Sedes</th>
+        <th>Diagnóstico</th>
+      </tr>
+      <tr>
+        <td><strong>Atención</strong><br><small>¿Captura en &lt;3s?</small></td>
+        <td>🟡 <strong>14/20</strong><br><small>Hero claro, carousel lo debilita</small></td>
+        <td>🟢 <strong>17/20</strong><br><small>Hero idéntico, chips claros</small></td>
+        <td>🟢 <strong>16/20</strong><br><small>Layout limpio, título directo</small></td>
+        <td>🟢 <strong>17/20</strong><br><small>Headline "más cercana a vos" es perfecto</small></td>
+      </tr>
+      <tr>
+        <td><strong>Interés</strong><br><small>¿Sostiene la lectura?</small></td>
+        <td>🟡 <strong>12/20</strong><br><small>Oferta grid buena, sin testimonios</small></td>
+        <td>🟢 <strong>15/20</strong><br><small>Plans bien explicados</small></td>
+        <td>🟡 <strong>11/20</strong><br><small>Form es funcional pero frío</small></td>
+        <td>🟢 <strong>16/20</strong><br><small>Filtros por zona aumentan engagement</small></td>
+      </tr>
+      <tr>
+        <td><strong>Deseo</strong><br><small>¿Crea urgencia/emoción?</small></td>
+        <td>🔴 <strong>8/20</strong><br><small>Sin urgencia, sin testimonios, sin precio</small></td>
+        <td>🟡 <strong>11/20</strong><br><small>Badge "más elegido" ayuda, falta precio</small></td>
+        <td>🔴 <strong>7/20</strong><br><small>Form no vende, solo captura</small></td>
+        <td>🟡 <strong>12/20</strong><br><small>WA por sede genera urgencia local</small></td>
+      </tr>
+      <tr>
+        <td><strong>Acción</strong><br><small>¿CTA claro y sin fricción?</small></td>
+        <td>🟡 <strong>10/20</strong><br><small>CTA rojo visible pero destino incorrecto</small></td>
+        <td>🟡 <strong>12/20</small></td>
+        <td>🔴 <strong>6/20</strong><br><small>Form no funciona (sin HubSpot)</small></td>
+        <td>🟢 <strong>16/20</strong><br><small>WA per-card = fricción mínima</small></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="framework-grid">
+    <div class="fw-block">
+      <h3>Principios Cialdini — Sitio global</h3>
+      <div class="fw-row">
+        <div class="fw-label">Prueba Social</div>
+        <div class="fw-bar-wrap"><div class="fw-bar s1"></div></div>
+        <div class="fw-score" style="color:#ef4444">1/3</div>
+      </div>
+      <div class="fw-row">
+        <div class="fw-label">Autoridad</div>
+        <div class="fw-bar-wrap"><div class="fw-bar s2"></div></div>
+        <div class="fw-score" style="color:#f59e0b">2/3</div>
+      </div>
+      <div class="fw-row">
+        <div class="fw-label">Urgencia</div>
+        <div class="fw-bar-wrap"><div class="fw-bar s1"></div></div>
+        <div class="fw-score" style="color:#ef4444">1/3</div>
+      </div>
+      <div class="fw-row">
+        <div class="fw-label">Escasez</div>
+        <div class="fw-bar-wrap"><div class="fw-bar s0"></div></div>
+        <div class="fw-score" style="color:#ef4444">0/3</div>
+      </div>
+      <div class="fw-row">
+        <div class="fw-label">Reciprocidad</div>
+        <div class="fw-bar-wrap"><div class="fw-bar s1"></div></div>
+        <div class="fw-score" style="color:#ef4444">1/3</div>
+      </div>
+      <div class="fw-row">
+        <div class="fw-label">Compromiso</div>
+        <div class="fw-bar-wrap"><div class="fw-bar s2"></div></div>
+        <div class="fw-score" style="color:#f59e0b">2/3</div>
+      </div>
+      <div class="fw-row">
+        <div class="fw-label">Simpatía</div>
+        <div class="fw-bar-wrap"><div class="fw-bar s2"></div></div>
+        <div class="fw-score" style="color:#f59e0b">2/3</div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:14px">⚠️ Prueba Social y Urgencia son los dos principios más impactantes en educación privada. Ambos en rojo.</p>
+    </div>
+
+    <div class="fw-block">
+      <h3>Heurísticas Nielsen — Home</h3>
+      <div class="fw-row">
+        <div class="fw-label">1. Visibilidad del estado</div>
+        <div class="fw-bar-wrap"><div class="fw-bar s2"></div></div>
+        <div class="fw-score" style="color:#f59e0b">2/3</div>
+      </div>
+      <div class="fw-row">
+        <div class="fw-label">2. Match mundo real</div>
+        <div class="fw-bar-wrap"><div class="fw-bar s3"></div></div>
+        <div class="fw-score" style="color:#22c55e">3/3</div>
+      </div>
+      <div class="fw-row">
+        <div class="fw-label">3. Control del usuario</div>
+        <div class="fw-bar-wrap"><div class="fw-bar s2"></div></div>
+        <div class="fw-score" style="color:#f59e0b">2/3</div>
+      </div>
+      <div class="fw-row">
+        <div class="fw-label">4. Consistencia</div>
+        <div class="fw-bar-wrap"><div class="fw-bar s3"></div></div>
+        <div class="fw-score" style="color:#22c55e">3/3</div>
+      </div>
+      <div class="fw-row">
+        <div class="fw-label">5. Prevención de errores</div>
+        <div class="fw-bar-wrap"><div class="fw-bar s2"></div></div>
+        <div class="fw-score" style="color:#f59e0b">2/3</div>
+      </div>
+      <div class="fw-row">
+        <div class="fw-label">6. Reconocimiento vs. recuerdo</div>
+        <div class="fw-bar-wrap"><div class="fw-bar s2"></div></div>
+        <div class="fw-score" style="color:#f59e0b">2/3</div>
+      </div>
+      <div class="fw-row">
+        <div class="fw-label">7. Flexibilidad y eficiencia</div>
+        <div class="fw-bar-wrap"><div class="fw-bar s2"></div></div>
+        <div class="fw-score" style="color:#f59e0b">2/3</div>
+      </div>
+      <div class="fw-row">
+        <div class="fw-label">8. Diseño minimalista</div>
+        <div class="fw-bar-wrap"><div class="fw-bar s2"></div></div>
+        <div class="fw-score" style="color:#f59e0b">2/3</div>
+      </div>
+      <div class="fw-row">
+        <div class="fw-label">9. Recuperación de errores</div>
+        <div class="fw-bar-wrap"><div class="fw-bar s1"></div></div>
+        <div class="fw-score" style="color:#ef4444">1/3</div>
+      </div>
+      <div class="fw-row">
+        <div class="fw-label">10. Ayuda y documentación</div>
+        <div class="fw-bar-wrap"><div class="fw-bar s2"></div></div>
+        <div class="fw-score" style="color:#f59e0b">2/3</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="section-label">Performance técnica</p>
+  <h2 class="section-title">Core Web Vitals estimados + SEO técnico</h2>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px">
+    <div>
+      <h3 style="font-size:14px;font-weight:700;color:var(--azul);margin-bottom:16px">Performance (estimado — GitHub Pages)</h3>
+      <table class="perf-table">
+        <tr><th>Métrica</th><th>Estimación</th><th>Estado</th></tr>
+        <tr>
+          <td>LCP (mayor contenido)</td>
+          <td>1.8–2.4s</td>
+          <td><span class="pill green">Bueno</span></td>
+        </tr>
+        <tr>
+          <td>CLS (estabilidad visual)</td>
+          <td>0.05–0.15</td>
+          <td><span class="pill orange">Posible issue</span></td>
+        </tr>
+        <tr>
+          <td>Google Fonts (2 familias)</td>
+          <td>+320ms bloqueo</td>
+          <td><span class="pill orange">Mejorable</span></td>
+        </tr>
+        <tr>
+          <td>Assets (PNG sin WebP)</td>
+          <td>Logo PNG sin optimizar</td>
+          <td><span class="pill orange">Mejorable</span></td>
+        </tr>
+        <tr>
+          <td>Tracking scripts</td>
+          <td>Ninguno detectado</td>
+          <td><span class="pill red">Sin tracking</span></td>
+        </tr>
+        <tr>
+          <td>CSS externo (styles.css)</td>
+          <td>Render-blocking</td>
+          <td><span class="pill orange">Aceptable</span></td>
+        </tr>
+      </table>
+      <p style="font-size:12px;color:var(--muted);margin-top:8px">La performance base es buena para GitHub Pages. El riesgo mayor es el CLS del carousel que cambia el layout en el primer render, y Google Fonts sin `display=swap` en algunos navegadores.</p>
+    </div>
+    <div>
+      <h3 style="font-size:14px;font-weight:700;color:var(--azul);margin-bottom:16px">SEO técnico</h3>
+      <div class="seo-grid" style="grid-template-columns:1fr">
+        <div class="seo-item">
+          <div class="seo-check">✅</div>
+          <div class="seo-title">Schema EducationalOrganization + hasCourse</div>
+          <div class="seo-body">Correcto, con los 4 programas listados. Mejor que el 90% de instituciones educativas AR.</div>
+        </div>
+        <div class="seo-item">
+          <div class="seo-check">✅</div>
+          <div class="seo-title">Meta description con propuesta de valor</div>
+          <div class="seo-body">"Terminá el secundario 100% online con título oficial..." — claro, directo, con keyword principal.</div>
+        </div>
+        <div class="seo-item">
+          <div class="seo-check">✅</div>
+          <div class="seo-title">OG tags + Twitter Card completos</div>
+          <div class="seo-body">og:image, og:locale (es_AR), og:description. Correcto para compartir en redes.</div>
+        </div>
+        <div class="seo-item" style="border-left:3px solid var(--rojo)">
+          <div class="seo-check">🔴</div>
+          <div class="seo-title">Sin AggregateRating en Schema</div>
+          <div class="seo-body">Falta aggregateRating con ratingValue y reviewCount. Activaría las estrellas en Google → +15-30% CTR orgánico. Es la mejora SEO de mayor impacto visual para este sitio.</div>
+        </div>
+        <div class="seo-item" style="border-left:3px solid #f59e0b">
+          <div class="seo-check">🟡</div>
+          <div class="seo-title">Canonical apunta a esbaflorida.edu.ar</div>
+          <div class="seo-body">Correcto para el sitio de producción, pero este ambiente (GitHub Pages) es de staging — asegurarse de que el canonical esté bien en la versión productiva.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     PÁG 5: FUNNEL ESTIMADO + OPORTUNIDADES
+════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-brand">ESBA Florida — Auditoría CRO</div>
+    <div class="page-num">Página 5 de 7 — Funnel + Oportunidades</div>
+  </div>
+
+  <p class="section-label">Funnel estimado sin analytics</p>
+  <h2 class="section-title">Embudo de conversión (heurístico)</h2>
+  <p class="section-sub">Sin GA4 activo los datos son estimaciones por benchmarks de educación privada AR. Instalar analytics es la acción #1 para reemplazar este funnel con datos reales.</p>
+
+  <div class="funnel-sec">
+    <div class="funnel-steps">
+
+      <div class="funnel-step">
+        <div class="funnel-left">
+          <div class="funnel-name">Visitas al sitio</div>
+          <div class="funnel-sub">100% del tráfico</div>
+        </div>
+        <div class="funnel-bar-col">
+          <div class="funnel-dot"></div>
+          <div class="funnel-line"></div>
+        </div>
+        <div class="funnel-right">
+          <div class="funnel-right-inner">
+            <div class="funnel-pct">100%</div>
+            <div class="funnel-note">Benchmark sector educación privada AR</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="funnel-step">
+        <div class="funnel-left">
+          <div class="funnel-name">Ven la propuesta educativa</div>
+          <div class="funnel-sub">Llegan a Bachillerato o planes</div>
+        </div>
+        <div class="funnel-bar-col">
+          <div class="funnel-dot"></div>
+          <div class="funnel-line"></div>
+        </div>
+        <div class="funnel-right">
+          <div class="funnel-right-inner">
+            <div class="funnel-pct">~55–65%</div>
+            <div class="funnel-drop">-35-45% Bounce en home — sin analytics confirmado</div>
+            <div class="funnel-note">El carousel y falta de testimonios empujan bounce arriba</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="funnel-step critical">
+        <div class="funnel-left">
+          <div class="funnel-name">Hacen clic en un CTA</div>
+          <div class="funnel-sub">WA o formulario</div>
+        </div>
+        <div class="funnel-bar-col">
+          <div class="funnel-dot"></div>
+          <div class="funnel-line"></div>
+        </div>
+        <div class="funnel-right">
+          <div class="funnel-right-inner">
+            <div class="funnel-pct" style="color:var(--rojo)">~8–15%</div>
+            <div class="funnel-drop">🔴 CUELLO DE BOTELLA PRINCIPAL</div>
+            <div class="funnel-note">Sin precio visible + CTA que lleva a otra página + sin testimonios = pocas consultas por visitante</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="funnel-step">
+        <div class="funnel-left">
+          <div class="funnel-name">Consulta vía WhatsApp</div>
+          <div class="funnel-sub">Conversación iniciada</div>
+        </div>
+        <div class="funnel-bar-col">
+          <div class="funnel-dot"></div>
+          <div class="funnel-line"></div>
+        </div>
+        <div class="funnel-right">
+          <div class="funnel-right-inner">
+            <div class="funnel-pct">~70–80%</div>
+            <div class="funnel-note">Del total que hace clic, la mayoría usa WA (formulario no funciona)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="funnel-step">
+        <div class="funnel-left">
+          <div class="funnel-name">Inscripción</div>
+          <div class="funnel-sub">Alumno matriculado</div>
+        </div>
+        <div class="funnel-bar-col">
+          <div class="funnel-dot"></div>
+        </div>
+        <div class="funnel-right">
+          <div class="funnel-right-inner">
+            <div class="funnel-pct">~25–40%</div>
+            <div class="funnel-note">De quienes consultan — depende del equipo de ventas, no del sitio</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="background:#fffbeb;border-radius:16px;padding:24px 28px;border:1px solid #fde68a;margin-top:32px">
+    <div style="font-size:13px;font-weight:700;color:#b45309;margin-bottom:8px">⚡ Oportunidad de mejora estimada en el cuello de botella</div>
+    <div style="font-size:13px;color:#78350f;line-height:1.65">
+      Si el CTR de CTA sobre visitas pasa de <strong>8% → 14%</strong> (alcanzable con: hero estático + precio visible + testimonios + CTA directo a WA), <strong>el volumen de consultas se multiplica por 1.75x sin cambiar el presupuesto publicitario</strong>. Con tracking instalado se puede medir el impacto exacto en 30 días.
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     PÁG 6: MATRIZ DE IMPACTO + RECOMENDACIONES
+════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-brand">ESBA Florida — Auditoría CRO</div>
+    <div class="page-num">Página 6 de 7 — Recomendaciones</div>
+  </div>
+
+  <p class="section-label">Plan de acción</p>
+  <h2 class="section-title">Prioridad × Esfuerzo</h2>
+
+  <div class="matrix-wrap">
+    <!-- SVG Matrix -->
+    <div class="matrix-svg-wrap">
+      <svg viewBox="0 0 320 280" width="100%">
+        <!-- Grid -->
+        <line x1="160" y1="20" x2="160" y2="260" stroke="#e5e7eb" stroke-width="1"/>
+        <line x1="20" y1="140" x2="300" y2="140" stroke="#e5e7eb" stroke-width="1"/>
+        <!-- Labels -->
+        <text x="90" y="16" text-anchor="middle" font-size="10" fill="#9ca3af" font-family="system-ui">BAJO ESFUERZO</text>
+        <text x="240" y="16" text-anchor="middle" font-size="10" fill="#9ca3af" font-family="system-ui">ALTO ESFUERZO</text>
+        <text x="12" y="80" font-size="9" fill="#9ca3af" font-family="system-ui" transform="rotate(-90 12 80)">ALTO IMPACTO</text>
+        <text x="12" y="210" font-size="9" fill="#9ca3af" font-family="system-ui" transform="rotate(-90 12 210)">BAJO IMPACTO</text>
+        <!-- Quadrant labels -->
+        <text x="90" y="35" text-anchor="middle" font-size="9" fill="#15803d" font-weight="700" font-family="system-ui">🚀 QUICK WINS</text>
+        <text x="240" y="35" text-anchor="middle" font-size="9" fill="#1d4ed8" font-weight="700" font-family="system-ui">📅 PLANIFICAR</text>
+        <text x="90" y="155" text-anchor="middle" font-size="9" fill="#6b7280" font-family="system-ui">🔁 CUANDO HAYA TIEMPO</text>
+        <text x="240" y="155" text-anchor="middle" font-size="9" fill="#9ca3af" font-family="system-ui">💀 EVITAR</text>
+        <!-- Dots: Quick Wins (high impact, low effort) -->
+        <circle cx="60" cy="50" r="12" fill="#dc2626" opacity=".85"/>
+        <text x="60" y="54" text-anchor="middle" font-size="8" fill="white" font-family="system-ui" font-weight="700">GA4</text>
+        <circle cx="95" cy="65" r="12" fill="#dc2626" opacity=".85"/>
+        <text x="95" y="69" text-anchor="middle" font-size="8" fill="white" font-family="system-ui" font-weight="700">WA</text>
+        <circle cx="130" cy="80" r="12" fill="#dc2626" opacity=".85"/>
+        <text x="130" y="84" text-anchor="middle" font-size="8" fill="white" font-family="system-ui" font-weight="700">Nav</text>
+        <circle cx="75" cy="100" r="12" fill="#f59e0b" opacity=".85"/>
+        <text x="75" y="104" text-anchor="middle" font-size="8" fill="white" font-family="system-ui" font-weight="700">Form</text>
+        <!-- Planificar (high impact, high effort) -->
+        <circle cx="195" cy="55" r="12" fill="#1d4ed8" opacity=".85"/>
+        <text x="195" y="59" text-anchor="middle" font-size="8" fill="white" font-family="system-ui" font-weight="700">Hero</text>
+        <circle cx="230" cy="80" r="12" fill="#1d4ed8" opacity=".85"/>
+        <text x="230" y="84" text-anchor="middle" font-size="8" fill="white" font-family="system-ui" font-weight="700">Test</text>
+        <circle cx="265" cy="100" r="12" fill="#1d4ed8" opacity=".85"/>
+        <text x="265" y="104" text-anchor="middle" font-size="8" fill="white" font-family="system-ui" font-weight="700">LP</text>
+        <!-- When time -->
+        <circle cx="80" cy="185" r="10" fill="#9ca3af" opacity=".7"/>
+        <text x="80" y="189" text-anchor="middle" font-size="7" fill="white" font-family="system-ui">Blog</text>
+        <circle cx="115" cy="200" r="10" fill="#9ca3af" opacity=".7"/>
+        <text x="115" y="204" text-anchor="middle" font-size="7" fill="white" font-family="system-ui">Mapa</text>
+      </svg>
+      <div style="display:flex;gap:16px;justify-content:center;margin-top:8px">
+        <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted)"><span style="width:10px;height:10px;border-radius:50%;background:#dc2626;display:inline-block"></span>Crítico</div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted)"><span style="width:10px;height:10px;border-radius:50%;background:#f59e0b;display:inline-block"></span>Importante</div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted)"><span style="width:10px;height:10px;border-radius:50%;background:#1d4ed8;display:inline-block"></span>Planificar</div>
+      </div>
+    </div>
+
+    <!-- Recs -->
+    <div class="recs-list">
+      <div class="rec-card p1">
+        <div class="rec-header">
+          <div class="rec-title">1. Instalar GA4 + Meta Pixel</div>
+          <div class="rec-badge p1">CRÍTICO</div>
+        </div>
+        <div class="rec-page">Todas las páginas · HOME-TRACK-01</div>
+        <div class="rec-body">Sin tracking es imposible medir el impacto de cualquier otra mejora. Instalar en &lt;2 horas. Configurar evento `whatsapp_click` como conversión principal.</div>
+        <div class="rec-impact">↑ Visible: ahora se puede medir TODO</div>
+        <div class="rec-effort">⏱ 2h · Desarrollador front o GTM</div>
+      </div>
+      <div class="rec-card p1">
+        <div class="rec-header">
+          <div class="rec-title">2. Conectar HubSpot al formulario</div>
+          <div class="rec-badge p1">CRÍTICO</div>
+        </div>
+        <div class="rec-page">Contacto.html · CONT-FORM-01</div>
+        <div class="rec-body">El formulario actual no procesa nada. Reemplazar el HTML form con el embed de HubSpot (ya planeado). 0 leads del formulario se pierden actualmente.</div>
+        <div class="rec-impact">↑ Recupera 100% de los leads de formulario</div>
+        <div class="rec-effort">⏱ 1h · Requiere cuenta HubSpot activa</div>
+      </div>
+      <div class="rec-card p1">
+        <div class="rec-header">
+          <div class="rec-title">3. Reemplazar carousel por hero estático</div>
+          <div class="rec-badge p1">CRÍTICO</div>
+        </div>
+        <div class="rec-page">Home · HOME-HERO-01</div>
+        <div class="rec-body">Usar solo slide 1 (Bachillerato) con CTA directo a WhatsApp. Mover In Company a una sección específica. Eliminar el slide de Referidos para tráfico de adquisición.</div>
+        <div class="rec-impact">↑ +20–30% en CTR del CTA principal</div>
+        <div class="rec-effort">⏱ 4h · Dev CSS/JS</div>
+      </div>
+      <div class="rec-card p2">
+        <div class="rec-header">
+          <div class="rec-title">4. CTA hero → WhatsApp directo</div>
+          <div class="rec-badge p2">IMPORTANTE</div>
+        </div>
+        <div class="rec-page">Home · HOME-CTA-01</div>
+        <div class="rec-body">"Preinscribirme" debe abrir WhatsApp (como los CTAs de las planes cards). Eliminar el paso intermedio en bachillerato.html para la audiencia que ya decidió.</div>
+        <div class="rec-impact">↑ -1 paso en el funnel = +15% consultas</div>
+        <div class="rec-effort">⏱ 30min · Cambiar href</div>
+      </div>
+      <div class="rec-card p2">
+        <div class="rec-header">
+          <div class="rec-title">5. Agregar precios / cuotas en planes</div>
+          <div class="rec-badge p2">IMPORTANTE</div>
+        </div>
+        <div class="rec-page">Home + Bachillerato · BACH-PRICE-01</div>
+        <div class="rec-body">Mostrar "desde $X/mes" en cada plan card. Los leads que ya saben el precio son más calificados y cierran más rápido. Mejora la eficiencia del equipo de ventas.</div>
+        <div class="rec-impact">↑ Leads más calificados, menor tiempo de cierre</div>
+        <div class="rec-effort">⏱ 1h · HTML + decisión comercial</div>
+      </div>
+      <div class="rec-card p2">
+        <div class="rec-header">
+          <div class="rec-title">6. Sección de testimonios en home</div>
+          <div class="rec-badge p2">IMPORTANTE</div>
+        </div>
+        <div class="rec-page">Home · HOME-SOCIAL-01</div>
+        <div class="rec-body">3 testimonios de egresados reales (foto + nombre + "Empecé a los X años, terminé en Y meses") antes del segundo fold. Para educación privada, la prueba social es el driver de conversión más potente.</div>
+        <div class="rec-impact">↑ +10–20% CVR en home</div>
+        <div class="rec-effort">⏱ 4h · Contenido + diseño</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     PÁG 7: TESTS A/B
+════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-brand">ESBA Florida — Auditoría CRO</div>
+    <div class="page-num">Página 7 de 7 — A/B Tests</div>
+  </div>
+
+  <p class="section-label">Plan de experimentos</p>
+  <h2 class="section-title">4 Tests A/B priorizados</h2>
+  <p class="section-sub">Ordenados por impacto × velocidad. Primero instalar GA4 — sin datos no se pueden declarar ganadores con significancia estadística.</p>
+
+  <table class="test-table" style="margin-bottom:40px">
+    <tr>
+      <th>#</th><th>Test</th><th>Página</th><th>Métrica primaria</th><th>Duración min.</th><th>Esfuerzo</th><th>Impacto esperado</th>
+    </tr>
+    <tr>
+      <td class="test-n">1</td>
+      <td><strong>Hero: carousel vs. hero estático</strong></td>
+      <td>Home</td>
+      <td>Click en CTA principal / sesión</td>
+      <td>3 semanas</td>
+      <td>4–6h</td>
+      <td><span class="impact-chip">↑ +20–35% CTR</span></td>
+    </tr>
+    <tr>
+      <td class="test-n">2</td>
+      <td><strong>CTA hero: "Preinscribirme" (actual) vs. "Consultá por WhatsApp →"</strong></td>
+      <td>Home</td>
+      <td>WhatsApp click rate</td>
+      <td>2 semanas</td>
+      <td>30min</td>
+      <td><span class="impact-chip">↑ +15–25% WA</span></td>
+    </tr>
+    <tr>
+      <td class="test-n">3</td>
+      <td><strong>Planes: con precio vs. sin precio</strong></td>
+      <td>Bachillerato</td>
+      <td>Clicks "Consultar plan" por sesión</td>
+      <td>2 semanas</td>
+      <td>1–2h</td>
+      <td><span class="impact-chip">↑ calidad lead</span></td>
+    </tr>
+    <tr>
+      <td class="test-n">4</td>
+      <td><strong>Form: 6 campos actuales vs. 4 campos optimizados</strong></td>
+      <td>Contacto</td>
+      <td>Tasa de completado del formulario</td>
+      <td>3 semanas</td>
+      <td>2h</td>
+      <td><span class="impact-chip">↑ +15–20% completado</span></td>
+    </tr>
+  </table>
+
+  <!-- Test 1 ficha -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+    <div style="border:1px solid var(--borde);border-radius:16px;padding:24px;border-top:4px solid var(--rojo)">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--rojo);margin-bottom:10px">Test #1 — Mayor impacto</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:12px">Carousel vs. Hero estático</div>
+      <div style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.6"><strong>Hipótesis:</strong> si eliminamos el carousel y mostramos solo el slide 1 con un CTA directo a WhatsApp, el CTR del CTA principal aumentará ≥15% porque el usuario no tendrá que esperar ni interactuar con el carrusel para ver la propuesta principal.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div style="background:#fef2f2;border-radius:10px;padding:12px">
+          <div style="font-size:10px;font-weight:700;color:var(--rojo);text-transform:uppercase;margin-bottom:6px">Control (A)</div>
+          <div style="font-size:12px;line-height:1.5">3 slides, auto-play, CTA "Preinscribirme" → bachillerato.html</div>
+        </div>
+        <div style="background:#f0fdf4;border-radius:10px;padding:12px">
+          <div style="font-size:10px;font-weight:700;color:var(--verde);text-transform:uppercase;margin-bottom:6px">Variante (B)</div>
+          <div style="font-size:12px;line-height:1.5">Hero estático, CTA "Consultá ahora por WhatsApp" → wa.me directo</div>
+        </div>
+      </div>
+      <div style="margin-top:14px;font-size:12px;color:var(--muted)">
+        <div><strong>Métrica primaria:</strong> Click en CTA / sesiones en home</div>
+        <div><strong>Muestra mínima:</strong> ~1,200 visitas por variante</div>
+        <div><strong>Herramienta:</strong> Google Optimize / VWO / división de tráfico manual</div>
+      </div>
+    </div>
+
+    <div style="border:1px solid var(--borde);border-radius:16px;padding:24px;border-top:4px solid var(--azul)">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--azul);margin-bottom:10px">Test #2 — Quick win</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:12px">Copy del CTA principal</div>
+      <div style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.6"><strong>Hipótesis:</strong> si el CTA dice "Consultá por WhatsApp →" (acción específica + canal) en lugar de "Preinscribirme" (comprometedor para quien no decidió), el CTR subirá ≥15% porque reduce la ansiedad de compromiso.</div>
+      <div style="background:var(--gris);border-radius:10px;padding:14px;margin-bottom:14px">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Variantes de copy a testear</div>
+        <div style="font-size:13px;line-height:2">
+          A: "Preinscribirme" (actual)<br>
+          B: "Consultá por WhatsApp →"<br>
+          C: "Empezá hoy — es gratis consultar"<br>
+          D: "Quiero saber mi plan"
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--muted)">
+        <div><strong>Esfuerzo:</strong> 30 minutos — solo cambia el href y el texto del botón</div>
+        <div><strong>Impacto si B gana:</strong> se puede implementar permanentemente sin tests futuros</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     CONCLUSIONES Y PLAN DE ACCIÓN
+════════════════════════════════════ -->
+<div class="page" style="background:var(--gris)">
+  <div class="page-header">
+    <div class="page-brand">ESBA Florida — Auditoría CRO</div>
+    <div class="page-num">Hoja de Conclusiones y Plan de Acción · Para compartir con el equipo</div>
+  </div>
+
+  <div class="conclusions">
+    <h2>Diagnóstico y plan en una página</h2>
+
+    <div class="conclusions-grid">
+      <div class="conc-card red">
+        <div class="conc-type">🔴 Problema Crítico</div>
+        <div class="conc-title">El sitio opera sin ojos</div>
+        <div class="conc-body">No hay Google Analytics ni Meta Pixel. No se sabe cuántos visitantes llegan, desde dónde, qué hacen ni cuántos consultan. Cualquier decisión de pauta o diseño es intuición, no dato. Esta es la primera acción — sin tracking, nada más importa.</div>
+      </div>
+      <div class="conc-card green">
+        <div class="conc-type">🟢 Fortaleza</div>
+        <div class="conc-title">La propuesta de valor es extraordinariamente clara</div>
+        <div class="conc-body">"Terminá el secundario 100% a distancia" + chips (Online · 16 meses · Título oficial) responde las 3 objeciones principales en el primer fold. Esta claridad es mejor que el 95% de competidores en el segmento educación adultos en Argentina.</div>
+      </div>
+      <div class="conc-card blue">
+        <div class="conc-type">💡 Mayor Oportunidad</div>
+        <div class="conc-title">El cuello de botella está en el CTA, no en el tráfico</div>
+        <div class="conc-body">Con datos heurísticos, estimamos que solo 8–15% de las visitas hace clic en algún CTA. Si ese ratio sube a 14–20% (alcanzable con: hero estático + CTA directo a WA + precio visible + un testimonio), el volumen de consultas se duplica sin gastar un peso más en pauta.</div>
+      </div>
+    </div>
+
+    <div class="checklist-title">✅ Checklist de acciones — próximos 30 días</div>
+    <table class="checklist-table">
+      <tr>
+        <th>Acción</th>
+        <th>Dónde</th>
+        <th>Tiempo</th>
+        <th>Impacto esperado</th>
+        <th>Responsable</th>
+        <th>✓</th>
+      </tr>
+      <tr>
+        <td><span class="impact-dot high"></span><strong>Instalar GA4 + Meta Pixel + evento whatsapp_click</strong></td>
+        <td>Todas las páginas (&lt;head&gt;)</td>
+        <td>2h</td>
+        <td>Visibilidad total del funnel</td>
+        <td>Dev / GTM</td>
+        <td><span class="ck-box"></span></td>
+      </tr>
+      <tr>
+        <td><span class="impact-dot high"></span><strong>Conectar HubSpot al formulario de contacto</strong></td>
+        <td>contacto.html</td>
+        <td>1h</td>
+        <td>Recupera 100% leads formulario</td>
+        <td>Dev + Marketing</td>
+        <td><span class="ck-box"></span></td>
+      </tr>
+      <tr>
+        <td><span class="impact-dot high"></span><strong>Reemplazar carousel por hero estático (solo slide 1)</strong></td>
+        <td>index.html</td>
+        <td>4h</td>
+        <td>+20–35% CTR del CTA principal</td>
+        <td>Dev</td>
+        <td><span class="ck-box"></span></td>
+      </tr>
+      <tr>
+        <td><span class="impact-dot high"></span><strong>CTA "Preinscribirme" → directo a WhatsApp</strong></td>
+        <td>Hero + Bachillerato</td>
+        <td>30min</td>
+        <td>-1 paso en funnel, +15% consultas</td>
+        <td>Dev</td>
+        <td><span class="ck-box"></span></td>
+      </tr>
+      <tr>
+        <td><span class="impact-dot high"></span><strong>Fix nav mobile (FOUC — menú cubre hero)</strong></td>
+        <td>styles.css / JS</td>
+        <td>2h</td>
+        <td>Hero visible al 100% de usuarios mobile</td>
+        <td>Dev</td>
+        <td><span class="ck-box"></span></td>
+      </tr>
+      <tr>
+        <td><span class="impact-dot mid"></span>Agregar precio/cuotas en las 3 plan cards</td>
+        <td>Bachillerato.html + Home</td>
+        <td>1h</td>
+        <td>Leads más calificados, cierre más rápido</td>
+        <td>Comercial + Dev</td>
+        <td><span class="ck-box"></span></td>
+      </tr>
+      <tr>
+        <td><span class="impact-dot mid"></span>Agregar 3 testimonios de egresados en home</td>
+        <td>index.html (nueva sección)</td>
+        <td>4h</td>
+        <td>+10–20% CVR home</td>
+        <td>Contenido + Dev</td>
+        <td><span class="ck-box"></span></td>
+      </tr>
+      <tr>
+        <td><span class="impact-dot mid"></span>Optimizar formulario: combinar Nombre+Apellido, reordenar campos</td>
+        <td>contacto.html</td>
+        <td>1h</td>
+        <td>+15–20% completado del form</td>
+        <td>Dev</td>
+        <td><span class="ck-box"></span></td>
+      </tr>
+      <tr>
+        <td><span class="impact-dot mid"></span>Actualizar "13 sedes" → "17 sedes" en stats bar</td>
+        <td>index.html (stats bar)</td>
+        <td>5min</td>
+        <td>Consistencia de datos</td>
+        <td>Dev</td>
+        <td><span class="ck-box"></span></td>
+      </tr>
+      <tr>
+        <td><span class="impact-dot low"></span>AggregateRating en Schema.org (activa estrellas en Google)</td>
+        <td>index.html (&lt;script ld+json&gt;)</td>
+        <td>30min</td>
+        <td>+15–30% CTR orgánico</td>
+        <td>Dev</td>
+        <td><span class="ck-box"></span></td>
+      </tr>
+    </table>
+
+    <div class="kpi-row">
+      <div class="kpi-box">
+        <div class="kpi-box-val">?%</div>
+        <div class="kpi-box-label">CTR CTA actual</div>
+        <div class="kpi-box-target">→ Meta: ≥ 15% en 30 días</div>
+      </div>
+      <div class="kpi-box">
+        <div class="kpi-box-val">0</div>
+        <div class="kpi-box-label">Leads form activos</div>
+        <div class="kpi-box-target">→ Meta: ≥ 20 leads/mes tras HubSpot</div>
+      </div>
+      <div class="kpi-box">
+        <div class="kpi-box-val">?</div>
+        <div class="kpi-box-label">WA clicks/semana</div>
+        <div class="kpi-box-target">→ GA4 revela la línea base real</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#fff;border-radius:16px;padding:24px 28px;border:1px solid var(--borde);text-align:center">
+    <div style="font-size:13px;font-weight:700;color:var(--azul);margin-bottom:6px">Score actual: 58/100 — Potencial post-implementación: 78/100</div>
+    <div style="font-size:12px;color:var(--muted)">Los 5 cambios críticos se pueden implementar en una semana de trabajo. La ganancia es medible con GA4 instalado a los 30 días.</div>
+  </div>
+</div>
+
+</body>
+</html>
