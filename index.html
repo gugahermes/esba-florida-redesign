@@ -70,6 +70,7 @@
 }
 </script>
 
+<style>@media(max-width:980px){nav:not(.open){transform:translateX(100%);visibility:hidden}}</style>
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
@@ -156,74 +157,12 @@
         </span>
       </div>
       <div class="slide-ctas">
-        <a href="bachillerato.html#planes" class="btn-rojo">Preinscribirme</a>
+        <a href="https://wa.me/5491157400965?text=Hola!%20Quiero%20informarme%20para%20terminar%20el%20secundario%20con%20ESBA%20Florida." class="btn-rojo" target="_blank" rel="noopener noreferrer">Consultá gratis por WhatsApp</a>
         <a href="#planes" class="btn-ghost">Ver planes →</a>
       </div>
     </div>
   </div>
 
-  <!-- SLIDE 2: In Company -->
-  <div class="slide" id="s1">
-    <div class="s2-bg"></div>
-    <div class="s2-overlay"></div>
-    <div class="slide-inner">
-      <div class="slide-tag"><span class="slide-tag-dot"></span>Bachillerato In Company</div>
-      <h2 class="slide-title">Tu empresa crece cuando tu equipo crece</h2>
-      <p class="slide-sub">Título oficial con validez nacional para todos tus empleados. Modalidad 100% online, adaptada al ritmo de trabajo.</p>
-      <div class="slide-chips">
-        <span class="chip">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-          Para empresas
-        </span>
-        <span class="chip">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          100% Online
-        </span>
-        <span class="chip">
-          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          Prosegur · AySA · Peugeot
-        </span>
-      </div>
-      <div class="slide-ctas">
-        <a href="https://wa.me/5491157400965?text=Hola!%20Quiero%20saber%20c%C3%B3mo%20funciona%20el%20Bachillerato%20In%20Company." class="btn-rojo" target="_blank" rel="noopener noreferrer">¿Cómo funciona?</a>
-        <a href="https://wa.me/5491157400965?text=Hola!%20Quiero%20consultar%20precio%20del%20Bachillerato%20In%20Company%20para%20mi%20empresa." class="btn-ghost" target="_blank" rel="noopener noreferrer">Consultar precio →</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE 3: Recomendación -->
-  <div class="slide" id="s2">
-    <div class="s3-bg"></div>
-    <div class="s3-pattern"></div>
-    <div class="s3-img"></div>
-    <div class="slide-inner">
-      <div class="slide-tag"><span class="slide-tag-dot"></span>Plan de recomendación</div>
-      <h2 class="slide-title">Recomendá a un amigo<br>y los dos ganan</h2>
-      <p class="slide-sub">Si sos alumno activo y recomendás a alguien, ambos reciben un beneficio real desde el primer día.</p>
-      <div class="slide-chips">
-        <span class="chip">🎁 Vos: 10% off en tu cuota mensual</span>
-        <span class="chip">🎓 Tu amigo: 80% off en la matrícula</span>
-      </div>
-      <div class="slide-ctas">
-        <a href="https://wa.me/5491157400965?text=Quiero%20recomendar%20a%20alguien" class="btn-azul" target="_blank" rel="noopener noreferrer">Quiero recomendar</a>
-        <a href="https://wa.me/5491157400965?text=Hola!%20Quiero%20conocer%20las%20condiciones%20del%20plan%20de%20recomendaci%C3%B3n." class="btn-ghost" target="_blank" rel="noopener noreferrer">Ver condiciones →</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Dots -->
-  <div class="slider-dots">
-    <button class="dot on" data-i="0"></button>
-    <button class="dot" data-i="1"></button>
-    <button class="dot" data-i="2"></button>
-  </div>
-  <!-- Arrows -->
-  <div class="slider-nav">
-    <button class="sarrow" id="sprev">‹</button>
-    <button class="sarrow" id="snext">›</button>
-  </div>
-  <!-- Progress bar -->
-  <div class="sprogress"><div class="sprogress-bar" id="sbar"></div></div>
 
 </section>
 
@@ -584,39 +523,6 @@ mainNav.querySelectorAll('a:not(.has-drop)').forEach(link => {
   });
 });
 
-// Slider
-const slides = document.querySelectorAll('.slide');
-const dots   = document.querySelectorAll('.dot');
-const bar    = document.getElementById('sbar');
-let cur = 0, total = slides.length, timer, prog, progStart;
-const DELAY = 5500;
-
-function goTo(n) {
-  slides[cur].classList.remove('active');
-  dots[cur].classList.remove('on');
-  cur = (n + total) % total;
-  slides[cur].classList.add('active');
-  dots[cur].classList.add('on');
-  resetProgress();
-}
-
-function resetProgress() {
-  bar.style.transition = 'none';
-  bar.style.width = '0%';
-  clearTimeout(timer);
-  clearInterval(prog);
-  setTimeout(() => {
-    bar.style.transition = `width ${DELAY}ms linear`;
-    bar.style.width = '100%';
-  }, 50);
-  timer = setTimeout(() => goTo(cur + 1), DELAY);
-}
-
-dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.i)));
-document.getElementById('snext').addEventListener('click', () => goTo(cur + 1));
-document.getElementById('sprev').addEventListener('click', () => goTo(cur - 1));
-
-resetProgress();
 </script>
 
 </body>
