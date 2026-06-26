@@ -770,6 +770,17 @@ footer{
   0%,100%{box-shadow:0 4px 22px rgba(37,211,102,.55)}
   50%{box-shadow:0 4px 32px rgba(37,211,102,.8),0 0 0 10px rgba(37,211,102,.1)}
 }
+@media(max-width:980px){
+  .wa-float{
+    width:auto;height:auto;
+    bottom:0;right:0;left:0;
+    border-radius:0;padding:16px;
+    justify-content:center;
+    animation:none;
+  }
+  .wa-float svg{width:28px;height:28px}
+  .wa-float.wa-hidden{opacity:0;transform:translateY(100%);pointer-events:none;transition:opacity .3s,transform .3s}
+}
 
 /* ── CURSO: HERO ─────────────────────────────────────── */
 .course-hero{
