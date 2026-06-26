@@ -772,14 +772,16 @@ footer{
 }
 @media(max-width:980px){
   .wa-float{
-    width:auto;height:auto;border-radius:50px;
+    width:auto;height:auto;
     bottom:0;right:0;left:0;
     border-radius:0;padding:14px 20px;
     justify-content:center;gap:10px;
     font-size:15px;font-weight:700;color:#fff;
     font-family:var(--font-body,'Montserrat',sans-serif);
     letter-spacing:.2px;animation:none;
+    transition:opacity .3s,transform .3s;
   }
+  .wa-float.wa-hidden{opacity:0;transform:translateY(100%);pointer-events:none}
   .wa-float::after{content:'Consultá gratis por WhatsApp'}
   .wa-float svg{width:22px;height:22px}
   .wa-float:hover{transform:none;box-shadow:0 4px 22px rgba(37,211,102,.55)}

@@ -251,6 +251,17 @@ mainNav.querySelectorAll('a:not(.has-drop)').forEach(link => {
     menuToggle.setAttribute('aria-expanded', 'false');
   });
 });
+
+// Ocultar barra WA mobile al llegar al footer
+(function(){
+  const waBtn = document.querySelector('.wa-float');
+  const footer = document.querySelector('footer');
+  if (!waBtn || !footer || window.innerWidth > 980) return;
+  const obs = new IntersectionObserver(entries => {
+    waBtn.classList.toggle('wa-hidden', entries[0].isIntersecting);
+  }, { threshold: 0 });
+  obs.observe(footer);
+})();
 </script>
 
 </body>

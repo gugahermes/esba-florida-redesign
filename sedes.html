@@ -1457,6 +1457,17 @@ function initSedesMap() {
 }
 
 initSedesMap();
+
+// Ocultar barra WA mobile al llegar al footer
+(function(){
+  const waBtn = document.querySelector('.wa-float');
+  const footer = document.querySelector('footer');
+  if (!waBtn || !footer || window.innerWidth > 980) return;
+  const obs = new IntersectionObserver(entries => {
+    waBtn.classList.toggle('wa-hidden', entries[0].isIntersecting);
+  }, { threshold: 0 });
+  obs.observe(footer);
+})();
 </script>
 </body>
 </html>
