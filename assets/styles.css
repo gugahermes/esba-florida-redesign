@@ -782,7 +782,6 @@ footer{
     transition:opacity .3s,transform .3s;
   }
   .wa-float.wa-hidden{opacity:0;transform:translateY(100%);pointer-events:none}
-  .wa-float::after{content:'Consultá gratis por WhatsApp'}
   .wa-float svg{width:22px;height:22px}
   .wa-float:hover{transform:none;box-shadow:0 4px 22px rgba(37,211,102,.55)}
 }
