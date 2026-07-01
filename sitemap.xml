@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Páginas principales -->
+  <url><loc>https://esbaflorida.edu.ar/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://esbaflorida.edu.ar/bachillerato.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://esbaflorida.edu.ar/tecnicaturas.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://esbaflorida.edu.ar/carreras-ucasal.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://esbaflorida.edu.ar/cursos.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://esbaflorida.edu.ar/sedes.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://esbaflorida.edu.ar/institucional.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://esbaflorida.edu.ar/contacto.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://esbaflorida.edu.ar/blog.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+
+  <!-- Tecnicaturas -->
+  <url><loc>https://esbaflorida.edu.ar/tecnicatura-administracion.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://esbaflorida.edu.ar/tecnicatura-sistemas.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://esbaflorida.edu.ar/tecnicatura-finanzas.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://esbaflorida.edu.ar/tecnicatura-rrhh.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://esbaflorida.edu.ar/tecnicatura-ciberseguridad.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://esbaflorida.edu.ar/tecnicatura-seguridad-ia.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Cursos -->
+  <url><loc>https://esbaflorida.edu.ar/curso-camaras-seguridad.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://esbaflorida.edu.ar/curso-electricidad-domiciliaria.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://esbaflorida.edu.ar/curso-energia-solar.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://esbaflorida.edu.ar/curso-aires-acondicionados.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://esbaflorida.edu.ar/curso-plomeria.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Blog -->
+  <url><loc>https://esbaflorida.edu.ar/blog-terminar-secundario.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://esbaflorida.edu.ar/blog-educacion-acelerada.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://esbaflorida.edu.ar/blog-educacion-flexible-adultos.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://esbaflorida.edu.ar/blog-comunidad-y-networking.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+</urlset>
