@@ -36,7 +36,23 @@ Estas tareas **no están en el código** — requieren acceso al servidor, cuent
 - ✅ Sin dependencias externas de imágenes (Unsplash u otros CDN externos)
 - ✅ Fuentes vía Google Fonts CDN (Playfair Display + Montserrat)
 - ✅ Datos de los 5 cursos presenciales (fecha, horario, precios) se leen en vivo desde Google Sheets — ver `HANDOFF-AGENCIA.md` sección 8, revisar CSP del hosting antes de publicar
+- ✅ 6 páginas de pago de inscripción (botón Mercado Pago + transferencia bancaria) — ver tabla más abajo
 - ⚠️ El formulario de contacto es provisional (ver arriba)
+
+## Páginas de pago de inscripción (botón Mercado Pago + transferencia)
+
+6 páginas nuevas, con la estética del rediseño, que reemplazan a las viejas de `esbaflorida.edu.ar/landings/inscripcion*`. **No están linkeadas desde ningún menú ni el sitemap a propósito** (llevan `noindex`) — se comparten por link directo durante el proceso de inscripción, igual que antes. Mismo botón de Mercado Pago y mismos datos bancarios que ya estaban configurados, no se generó nada nuevo.
+
+| Curso | Archivo | Preview |
+|---|---|---|
+| Cámaras y Alarmas | `pago-camaras-seguridad.html` | [ver](https://gugahermes.github.io/esba-florida-redesign/pago-camaras-seguridad.html) |
+| Electricidad Domiciliaria | `pago-electricidad-domiciliaria.html` | [ver](https://gugahermes.github.io/esba-florida-redesign/pago-electricidad-domiciliaria.html) |
+| Energía Solar Fotovoltaica | `pago-energia-solar.html` | [ver](https://gugahermes.github.io/esba-florida-redesign/pago-energia-solar.html) |
+| Plomería Domiciliaria | `pago-plomeria.html` | [ver](https://gugahermes.github.io/esba-florida-redesign/pago-plomeria.html) |
+| Aires Acondicionados | `pago-aires-acondicionados.html` | [ver](https://gugahermes.github.io/esba-florida-redesign/pago-aires-acondicionados.html) |
+| Bachillerato (matrícula, sin Mercado Pago) | `pago-bachillerato.html` | [ver](https://gugahermes.github.io/esba-florida-redesign/pago-bachillerato.html) |
+
+Al pasar al dominio final, la URL de cada una pasa a ser `esbaflorida.edu.ar/pago-<curso>.html`. Detalle técnico completo en `HANDOFF-AGENCIA.md` sección 10.
 
 ## Cómo publicarlo
 
