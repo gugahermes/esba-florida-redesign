@@ -20,6 +20,7 @@ Estas tareas **no están en el código** — requieren acceso al servidor, cuent
 | 🟡 | **Google Search Console** | Verificar dominio y subir `sitemap.xml` (ya existe en el repo en la raíz). |
 | 🟡 | **Redirects 301** | Si alguna URL del WordPress viejo cambia de formato, configurar redirects en el servidor para no perder posicionamiento SEO. |
 | 🟡 | **HTTPS forzado** | Configurar SSL y redirect HTTP→HTTPS en el servidor (no es código del sitio). |
+| 🟡 | **CSP y Google Sheets** | Si el hosting nuevo aplica una `Content-Security-Policy`, agregar `docs.google.com` a `connect-src` — si no, los 5 `curso-*.html` dejan de poder leer los datos en vivo (fecha, horario, precios) y quedan solo con los valores estáticos del último commit. Ver `HANDOFF-AGENCIA.md` sección 8. |
 | 🟢 | **Google My Business** | Confirmar/actualizar datos desde la cuenta de Google Business de ESBA Florida. |
 
 🔴 Crítico antes del lanzamiento · 🟡 Importante · 🟢 Recomendado
@@ -34,6 +35,7 @@ Estas tareas **no están en el código** — requieren acceso al servidor, cuent
 - ✅ JSON-LD Schema en páginas clave (home, bachillerato, sedes, blog posts)
 - ✅ Sin dependencias externas de imágenes (Unsplash u otros CDN externos)
 - ✅ Fuentes vía Google Fonts CDN (Playfair Display + Montserrat)
+- ✅ Datos de los 5 cursos presenciales (fecha, horario, precios) se leen en vivo desde Google Sheets — ver `HANDOFF-AGENCIA.md` sección 8, revisar CSP del hosting antes de publicar
 - ⚠️ El formulario de contacto es provisional (ver arriba)
 
 ## Cómo publicarlo

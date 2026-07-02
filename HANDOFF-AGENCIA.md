@@ -64,8 +64,25 @@ Si alguno de estos datos cambia, hay que actualizarlo en cada página donde apar
 - **Botón flotante de WhatsApp:** posicionado en `bottom:90px` (no en la esquina exacta) a propósito, para no tapar las flechas de navegación del slider de la home.
 - **Fuentes:** Google Fonts vía CDN (`Playfair Display` + `Montserrat`), no están self-hosted.
 - **Sin analytics ni pixels todavía** — si la agencia va a agregar Google Analytics/Meta Pixel, no hay nada instalado actualmente para entrar en conflicto.
+- **Datos de cursos vía Google Sheets** — ver sección 8 para el detalle completo. No tocar `assets/curso-datos.js` sin leer esa sección primero.
 
-## 8. Estado técnico al momento de la entrega (julio 2026)
+## 8. Datos variables de cursos presenciales (Google Sheets)
+
+Las 5 páginas `curso-*.html` (Electricidad, Aires Acondicionados, Energía Solar, Cámaras de Seguridad, Plomería) **no tienen hardcodeados** la fecha de inicio, los días/horario de cursada, ni los valores de inscripción y cuotas. Esos datos se leen en vivo desde una Google Sheet cada vez que alguien carga la página.
+
+**Cómo funciona:**
+- `assets/curso-datos.js` (nuevo, compartido por las 5 páginas) hace un `fetch` a la API pública de exportación CSV de Google (`/gviz/tq?tqx=out:csv&gid=0`) sobre la Sheet **"Datos Cursos ESBA Florida — Web"**, que vive en el Drive de `agente.ia@esbaflorida.edu.ar`.
+- Cada `curso-*.html` tiene un atributo `data-curso-id="..."` en el `<body>` (ej. `data-curso-id="electricidad-domiciliaria"`) que el script usa para buscar la fila correspondiente en la Sheet.
+- Columnas de la Sheet: `curso_id | nombre_curso | fecha_inicio | dias_horario | inscripcion | cuota | num_cuotas`.
+- El script inyecta los valores en tres elementos por página: `#txt-horario` (chip del hero), `#val-inscripcion` y `#val-cuotas` (sección "Inversión").
+- **La Sheet tiene que seguir siendo pública ("Cualquier usuario con el enlace / Lector")** para que el `fetch` funcione desde el navegador de cualquier visitante — no requiere API key ni autenticación, pero si alguien cambia el permiso a privado, el fetch falla silenciosamente.
+- **Fallback:** si el fetch falla por cualquier motivo (Sheet privada, sin red, ID cambiado, CSP del hosting nuevo bloqueando el dominio `docs.google.com`), el script no rompe nada — simplemente no actualiza, y la página se queda con los valores estáticos que ya están escritos en el HTML (los últimos que se hayan commiteado).
+
+**Punto de atención al migrar al servidor de producción:** si el hosting final tiene una política CSP (`Content-Security-Policy`) restrictiva, hay que agregar `docs.google.com` a `connect-src` (o el header equivalente), o el fetch va a fallar silenciosamente y el sitio quedará mostrando siempre los últimos valores estáticos en vez de los actualizados en la Sheet.
+
+**Quién administra la Sheet:** João, desde `agente.ia@esbaflorida.edu.ar`. Cualquier cambio de precio, fecha o horario de estos 5 cursos se hace ahí, sin tocar código ni redeployar.
+
+## 9. Estado técnico al momento de la entrega (julio 2026)
 
 - ✅ OG tags (og:title, og:description, og:image, og:url) y Twitter cards en las 25 páginas
 - ✅ `sitemap.xml` con las 25 URLs en la raíz del repo
@@ -76,6 +93,7 @@ Si alguno de estos datos cambia, hay que actualizarlo en cada página donde apar
 - ✅ `contacto.html` como página independiente (además de la sección `#contacto` en la home)
 - ⚠️ El formulario de contacto es provisional (ver sección 5)
 - ⚠️ Sin Google Analytics, Meta Pixel ni ningún pixel de tracking instalado — la agencia debe agregarlos
+- ✅ Datos variables de los 5 cursos presenciales (fecha, horario, precios) vía Google Sheets — ver sección 8. Revisar CSP del hosting nuevo antes de publicar.
 - ℹ️ Hay un 5° borrador de post de blog sin publicar (sobre terminalidad educativa en Argentina) — existe como documento de trabajo aparte, João decide cuándo publicarlo
 
 ---
