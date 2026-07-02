@@ -54,7 +54,13 @@
       <div class="pcard">
         <h3 class="pcard-name" style="font-size:20px;margin-bottom:18px">Transferencia bancaria</h3>
         <div style="display:flex;flex-direction:column;gap:14px">
-          <div><p class="pcard-req" style="color:#999;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px">CBU</p><p style="font-size:15px;font-weight:600;color:var(--azul)">0170025120000001347481</p></div>
+          <div>
+            <p class="pcard-req" style="color:#999;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px">CBU</p>
+            <p style="font-size:15px;font-weight:600;color:var(--azul);display:flex;align-items:center;gap:8px">
+              0170025120000001347481
+              <button type="button" class="copy-btn" data-copy="0170025120000001347481" aria-label="Copiar CBU" title="Copiar CBU" style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border:1.5px solid var(--gris-med);background:#fff;border-radius:6px;cursor:pointer;color:var(--azul);flex-shrink:0;padding:0"><svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+            </p>
+          </div>
           <div><p class="pcard-req" style="color:#999;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px">Nº de cuenta</p><p style="font-size:15px;font-weight:600;color:var(--azul)">025-013474/8</p></div>
           <div><p class="pcard-req" style="color:#999;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px">CUIT</p><p style="font-size:15px;font-weight:600;color:var(--azul)">33-70751581-9</p></div>
           <div><p class="pcard-req" style="color:#999;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px">A nombre de</p><p style="font-size:15px;font-weight:600;color:var(--azul)">ESBA FLORIDA S.A.</p></div>
@@ -90,6 +96,22 @@
 const hdr = document.getElementById('hdr');
 window.addEventListener('scroll', () => {
   hdr.classList.toggle('scrolled', window.scrollY > 30);
+});
+
+document.querySelectorAll('.copy-btn').forEach(btn => {
+  const original = btn.innerHTML;
+  btn.addEventListener('click', () => {
+    navigator.clipboard.writeText(btn.dataset.copy).then(() => {
+      btn.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+      btn.style.borderColor = '#25D366';
+      btn.style.color = '#25D366';
+      setTimeout(() => {
+        btn.innerHTML = original;
+        btn.style.borderColor = '';
+        btn.style.color = '';
+      }, 1500);
+    });
+  });
 });
 </script>
 
