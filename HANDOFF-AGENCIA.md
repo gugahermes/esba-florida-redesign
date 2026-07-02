@@ -35,10 +35,11 @@ cursos.html + curso-*.html (5)           → Cursos presenciales de oficios
 tecnicaturas.html + tecnicatura-*.html (5) → Tecnicaturas de nivel superior
 carreras-ucasal.html                    → Carreras UCASAL a distancia
 blog.html + blog-*.html (4)             → Blog
+pago-*.html (6)                         → Páginas de pago de inscripción (ocultas, ver sección 10)
 assets/                                 → CSS compartido (styles.css), logos, fotos
 ```
 
-Todas las páginas comparten un único `assets/styles.css` — no hay CSS por página. Si se cambia un color o un estilo, se cambia ahí y afecta a las 22 páginas.
+Todas las páginas comparten un único `assets/styles.css` — no hay CSS por página. Si se cambia un color o un estilo, se cambia ahí y afecta a todas las páginas.
 
 ## 5. ⚠️ Pendientes antes de salir a producción
 
@@ -95,6 +96,17 @@ Las 5 páginas `curso-*.html` (Electricidad, Aires Acondicionados, Energía Sola
 - ⚠️ Sin Google Analytics, Meta Pixel ni ningún pixel de tracking instalado — la agencia debe agregarlos
 - ✅ Datos variables de los 5 cursos presenciales (fecha, horario, precios) vía Google Sheets — ver sección 8. Revisar CSP del hosting nuevo antes de publicar.
 - ℹ️ Hay un 5° borrador de post de blog sin publicar (sobre terminalidad educativa en Argentina) — existe como documento de trabajo aparte, João decide cuándo publicarlo
+- ✅ 6 páginas de pago de inscripción (`pago-*.html`) — ver sección 10. **No borrar pensando que son huérfanas**, contienen datos bancarios reales y se envían por WhatsApp durante el proceso de inscripción.
+
+## 10. Páginas de pago de inscripción (ocultas, no indexadas)
+
+Hay 6 páginas (`pago-camaras-seguridad.html`, `pago-electricidad-domiciliaria.html`, `pago-energia-solar.html`, `pago-plomeria.html`, `pago-aires-acondicionados.html`, `pago-bachillerato.html`) que **no están linkeadas desde ningún menú, footer ni sitemap** — se accede a ellas solo con el link directo, que el equipo de ESBA envía por WhatsApp a cada alumno durante el proceso de inscripción, como reemplazo con la nueva estética de las páginas de pago que existían en `esbaflorida.edu.ar/landings/inscripcion*` del sitio viejo.
+
+**Contenido de cada página:** botón de Mercado Pago (con el mismo `pref_id` que ya estaba configurado en el sitio viejo — no se generaron preferencias de pago nuevas) y/o datos de transferencia bancaria (CBU, Nº de cuenta, CUIT, titular). `pago-bachillerato.html` es la única sin botón de Mercado Pago (el sitio viejo tampoco lo tenía ahí, solo transferencia).
+
+**Por qué están "ocultas":** tienen `<meta name="robots" content="noindex, nofollow">` para que no aparezcan en resultados de Google (contienen datos bancarios reales, no tiene sentido que sean indexables), y no están en `sitemap.xml`. Sí tienen `og:title`/`og:description` para que se vea una preview decente cuando se comparte el link por WhatsApp.
+
+**Al migrar al servidor de producción:** subir estos 6 archivos igual que el resto — no requieren nada especial del servidor, son HTML estático como todo lo demás. Si en algún momento se reemplaza el `pref_id` de Mercado Pago de algún curso (por ejemplo si cambia el precio), avisarle a João para que lo actualice — el link de Mercado Pago está hardcodeado en el HTML de cada página, no viene de la Google Sheet de la sección 8.
 
 ---
 ¿Dudas sobre alguna decisión de diseño o por qué algo está armado así? Preguntarle a João — la mayoría de las decisiones de arquitectura de este rediseño están documentadas con su razonamiento en notas internas, pero no forman parte de este repo.
