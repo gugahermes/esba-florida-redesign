@@ -338,6 +338,13 @@ nav{display:flex;align-items:center;gap:2px}
 }
 .stat-div{width:1px;height:40px;background:rgba(255,255,255,.15);flex-shrink:0}
 
+/* Insignia de calificación de Google (stat clickeable) */
+.stat-google{cursor:pointer;transition:opacity .2s}
+.stat-google:hover{opacity:.82}
+.stat-stars{position:relative;display:inline-block;font-size:18px;line-height:1;letter-spacing:2px;margin:4px 0}
+.stat-stars-bg{color:rgba(255,255,255,.25)}
+.stat-stars-fg{position:absolute;top:0;left:0;overflow:hidden;white-space:nowrap;color:#FBBC05}
+
 /* ── SECTIONS ────────────────────────────────────────── */
 .sec{padding:80px 32px}
 .sec-inner{max-width:1280px;margin:0 auto}
